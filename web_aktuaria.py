@@ -161,37 +161,30 @@ footer{
     0 20px 40px rgba(0,0,0,.15);
 }
 
-.card-title{
+.card h3{
 
-    color:#111827;
+```
+color:#111827;
 
-    font-size:22px;
+font-size:22px;
 
-    font-weight:800;
+font-weight:800;
 
-    letter-spacing:1px;
+margin-bottom:18px;
+```
+
 }
 
-.card-desc{
+.card p{
 
-    color:#6B7280;
+```
+color:#6B7280;
 
-    line-height:1.8;
+line-height:1.8;
 
-    font-size:15px;
-}
+font-size:15px;
+```
 
-.card-link{
-
-    margin-top:25px;
-
-    color:#6366F1;
-
-    font-weight:700;
-
-    font-size:15px;
-
-    transition:.3s;
 }
 
 .card:hover .card-link{
@@ -353,127 +346,104 @@ if st.session_state.menu == "Dashboard":
     col1,col2,col3 = st.columns(3)
 
     with col1:
-        st.markdown("""
-        <div class="card">
     
-            <div class="card-title">
-            BUNGA MAJEMUK
-            </div>
+    ```
+    st.markdown("""
+    <div class="card">
+        <h3>BUNGA MAJEMUK</h3>
     
-            <div class="card-desc">
-            Menghitung pertumbuhan investasi
-            berdasarkan bunga majemuk.
-            </div>
+        <p>
+        Menghitung pertumbuhan investasi
+        berdasarkan bunga majemuk.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
     
-            <div class="card-link">
-            Coba Sekarang →
-            </div>
+    if st.button("Coba Sekarang →", key="bunga"):
+        st.session_state.menu = "Bunga"
+        st.rerun()
+    ```
     
-        </div>
-        """, unsafe_allow_html=True)
-    
-        if st.button("", key="bunga"):
-            st.session_state.menu = "Bunga"
-            st.rerun()
-            
     with col2:
-        st.markdown("""
-        <div class="card">
     
-            <div class="card-title">
-            NILAI MASA DEPAN
-            </div>
+    ```
+    st.markdown("""
+    <div class="card">
+        <h3>NILAI MASA DEPAN</h3>
     
-            <div class="card-desc">
-            Proyeksi nilai investasi
-            pada masa mendatang.
-            </div>
+        <p>
+        Proyeksi nilai investasi
+        pada masa mendatang.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
     
-            <div class="card-link">
-            Coba Sekarang →
-            </div>
+    if st.button("Coba Sekarang →", key="fv"):
+        st.session_state.menu = "FV"
+        st.rerun()
+    ```
     
-        </div>
-        """, unsafe_allow_html=True)
-    
-        if st.button("", key="fv"):
-            st.session_state.menu = "FV"
-            st.rerun()
-            
     with col3:
-        st.markdown("""
-        <div class="card">
     
-            <div class="card-title">
-            TARGET KEUANGAN
-            </div>
+    ```
+    st.markdown("""
+    <div class="card">
+        <h3>TARGET KEUANGAN</h3>
     
-            <div class="card-desc">
-            Menentukan kebutuhan tabungan
-            untuk mencapai tujuan finansial.
-            </div>
+        <p>
+        Menentukan kebutuhan tabungan
+        untuk mencapai tujuan finansial.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
     
-            <div class="card-link">
-            Coba Sekarang →
-            </div>
+    if st.button("Coba Sekarang →", key="target"):
+        st.session_state.menu = "Target"
+        st.rerun()
+    ```
     
-        </div>
-        """, unsafe_allow_html=True)
+    st.write("")
     
-        if st.button("", key="target"):
-            st.session_state.menu = "Target"
-            st.rerun()
-
     col4,col5 = st.columns(2)
-
+    
     with col4:
-        st.markdown("""
-        <div class="card">
     
-            <div class="card-title">
-            DANA DARURAT
-            </div>
+    ```
+    st.markdown("""
+    <div class="card">
+        <h3>DANA DARURAT</h3>
     
-            <div class="card-desc">
-            Menghitung kebutuhan dana
-            cadangan keuangan.
-            </div>
+        <p>
+        Menghitung kebutuhan dana
+        cadangan keuangan.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
     
-            <div class="card-link">
-            Coba Sekarang →
-            </div>
+    if st.button("Coba Sekarang →", key="darurat"):
+        st.session_state.menu = "Darurat"
+        st.rerun()
+    ```
     
-        </div>
-        """, unsafe_allow_html=True)
-    
-        if st.button("", key="darurat"):
-            st.session_state.menu = "Darurat"
-            st.rerun()
     with col5:
-        st.markdown("""
-        <div class="card">
     
-            <div class="card-title">
-            DANA PENSIUN
-            </div>
+    ```
+    st.markdown("""
+    <div class="card">
+        <h3>DANA PENSIUN</h3>
     
-            <div class="card-desc">
-            Perencanaan dana pensiun
-            jangka panjang.
-            </div>
+        <p>
+        Perencanaan dana pensiun
+        jangka panjang.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
     
-            <div class="card-link">
-            Coba Sekarang →
-            </div>
-    
-        </div>
-        """, unsafe_allow_html=True)
-    
-        if st.button("", key="pensiun"):
-            st.session_state.menu = "Pensiun"
-            st.rerun()
-
-    # ==========================
+    if st.button("Coba Sekarang →", key="pensiun"):
+        st.session_state.menu = "Pensiun"
+        st.rerun()
+    ```
+     # ==========================
     # FINANCIAL INSIGHT
     # ==========================
     
