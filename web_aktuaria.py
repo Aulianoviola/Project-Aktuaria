@@ -473,27 +473,27 @@ if st.session_state.menu == "Dashboard":
             st.session_state.menu = "Pensiun"
             st.rerun()
 
-# ==========================
-# FINANCIAL INSIGHT
-# ==========================
-
-st.write("")
-st.write("")
-
-st.markdown("""
-<div class="result">
-
-<div class="result-title">
-FINANCIAL INSIGHT
-</div>
-
-<div class="result-value">
-Konsistensi lebih penting daripada jumlah yang besar di awal.
-</div>
-
-</div>
-""", unsafe_allow_html=True)
+    # ==========================
+    # FINANCIAL INSIGHT
+    # ==========================
     
+    st.write("")
+    st.write("")
+    
+    st.markdown("""
+    <div class="result">
+    
+    <div class="result-title">
+    FINANCIAL INSIGHT
+    </div>
+    
+    <div class="result-value">
+    Konsistensi lebih penting daripada jumlah yang besar di awal.
+    </div>
+    
+    </div>
+    """, unsafe_allow_html=True)
+        
         
 elif st.session_state.menu == "Bunga":
     if st.button("← Kembali ke Dashboard"):
