@@ -869,7 +869,7 @@ elif st.session_state.menu == "Pensiun":
     if st.button("← Kembali ke Dashboard"):
         st.session_state.menu = "Dashboard"
         st.rerun()
-
+    st.error("AKU DI SINI")
     st.markdown(
     """
     <div class="hero">
