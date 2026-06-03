@@ -515,14 +515,16 @@ elif st.session_state.menu == "Target":
         st.session_state.menu = "Dashboard"
         st.rerun()
 
-    st.markdown("""
+   st.markdown("""
     <div class="hero">
-        <h1 class="hero-title">Target Keuangan</h1>
+        <div class="hero-title">
+            Target Keuangan
+        </div>
     
-        <p class="hero-sub">
+        <div class="hero-sub">
             Tentukan jumlah tabungan yang diperlukan
             untuk mencapai tujuan finansial.
-        </p>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
