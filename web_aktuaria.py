@@ -9,240 +9,221 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* =========================
-   FONT
-========================= */
-
+/* FONT */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 html, body, [class*="css"]{
     font-family:'Poppins',sans-serif;
 }
 
-/* Background */
+/* =========================
+   BACKGROUND
+========================= */
+
 .stApp{
-    background:
-    radial-gradient(circle at top right,
-    rgba(139,92,246,.35),
-    transparent 35%),
+    background:#EEF1F8;
+}
 
-    radial-gradient(circle at bottom left,
-    rgba(99,102,241,.25),
-    transparent 35%),
+/* =========================
+   SIDEBAR
+========================= */
 
-    linear-gradient(
-        135deg,
-        #eef2ff 0%,
-        #e9d5ff 50%,
-        #ddd6fe 100%
+section[data-testid="stSidebar"]{
+    background:linear-gradient(
+        180deg,
+        #7B61FF,
+        #6C63FF
     );
 }
 
-/* Hero */
+section[data-testid="stSidebar"] *{
+    color:white;
+}
+
+/* =========================
+   HERO
+========================= */
+
 .hero{
-    background:
-    linear-gradient(
-        135deg,
-        rgba(255,255,255,.95),
-        rgba(243,232,255,.9)
-    );
+    background:white;
 
-    backdrop-filter:blur(30px);
+    border-radius:32px;
 
-    border:1px solid rgba(255,255,255,.5);
-
-    border-radius:40px;
-
-    padding:70px;
+    padding:60px;
 
     box-shadow:
-    0 30px 60px rgba(124,58,237,.20);
+    0 15px 40px rgba(0,0,0,.08);
 
-    overflow:hidden;
-    position:relative;
-}
-.hero::before{
-    content:"";
-    position:absolute;
-
-    width:400px;
-    height:400px;
-
-    right:-120px;
-    top:-120px;
-
-    background:
-    radial-gradient(
-        circle,
-        rgba(139,92,246,.20),
-        transparent 70%
-    );
+    border:none;
 }
 
 .hero-title{
-    font-size:72px;
-    font-weight:800;
     color:#111827;
+    font-size:60px;
+    font-weight:800;
+    margin-bottom:10px;
 }
 
 .hero-sub{
-    font-size:22px;
     color:#6B7280;
-    max-width:700px;
+    font-size:20px;
+    line-height:1.7;
 }
 
-/* CARD */
+/* =========================
+   CARD
+========================= */
+
 .card{
-    background:
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.95),
-        rgba(237,233,254,.85)
-    );
+    background:white;
 
-    backdrop-filter:blur(20px);
+    border-radius:28px;
 
-    border-radius:35px;
+    padding:30px;
 
-    padding:35px;
-
-    min-height:240px;
-
-    border:1px solid rgba(255,255,255,.7);
+    min-height:220px;
 
     box-shadow:
-    0 20px 50px rgba(124,58,237,.12);
+    0 10px 25px rgba(0,0,0,.06);
 
-    transition:.4s;
+    transition:0.3s;
 }
 
 .card:hover{
-    transform:
-    translateY(-12px);
+    transform:translateY(-5px);
 
     box-shadow:
-    0 30px 60px rgba(124,58,237,.25);
+    0 20px 35px rgba(0,0,0,.08);
 }
 
 .card h3{
+    font-size:24px;
+    font-weight:700;
     color:#111827;
-    font-size:28px;
-    font-weight:800;
-    margin-bottom:18px;
 }
 
 .card p{
     color:#6B7280;
-    font-size:16px;
-    line-height:1.8;
+    line-height:1.7;
 }
 
-/* Statistic Card */
+/* =========================
+   STAT CARD
+========================= */
+
 .stat-card{
     background:white;
 
-    border-radius:25px;
+    border-radius:24px;
 
     padding:25px;
 
     text-align:center;
 
     box-shadow:
-    0 10px 30px rgba(0,0,0,.05);
+    0 8px 20px rgba(0,0,0,.05);
 }
 
 .stat-number{
-    font-size:28px;
+    color:#6C63FF;
+
+    font-size:32px;
+
     font-weight:800;
-    color:#4F46E5;
 }
 
 .stat-title{
     color:#6B7280;
 }
 
-/* Result */
+/* =========================
+   RESULT CARD
+========================= */
+
 .result{
-    background:
-    linear-gradient(
+    background:linear-gradient(
         135deg,
-        #4f46e5,
-        #7c3aed
+        #6C63FF,
+        #8B7CFF
     );
-
-    border-radius:35px;
-
-    padding:45px;
 
     color:white;
 
+    border-radius:30px;
+
+    padding:40px;
+
     box-shadow:
-    0 20px 50px rgba(124,58,237,.30);
+    0 15px 35px rgba(108,99,255,.25);
 }
 
 .result-title{
-    color:#ddd6fe;
-    letter-spacing:2px;
+    color:#E9E5FF;
 }
 
 .result-value{
     color:white;
-    font-size:60px;
+
+    font-size:58px;
+
     font-weight:800;
 }
 
-/* Button */
+/* =========================
+   BUTTON
+========================= */
+
 .stButton > button{
 
-    background:
-    linear-gradient(
-        135deg,
-        #6366f1,
-        #8b5cf6,
-        #a855f7
-    );
+    background:#6C63FF !important;
 
-    border:none;
+    color:white !important;
 
-    border-radius:999px;
+    border:none !important;
 
-    height:58px;
+    border-radius:14px !important;
 
-    font-weight:700;
+    height:55px;
+
+    font-weight:600;
 
     box-shadow:
-    0 15px 30px rgba(139,92,246,.30);
+    0 8px 20px rgba(108,99,255,.25);
+
+    transition:.3s;
 }
 
 .stButton > button:hover{
 
-    transform:translateY(-3px);
+    background:#5A52E8 !important;
 
-    box-shadow:
-    0 10px 30px rgba(139,92,246,.40);
+    transform:translateY(-2px);
 }
 
-.hero::before{
-    content:"";
+/* =========================
+   INPUT
+========================= */
 
-    position:absolute;
+.stTextInput input,
+.stNumberInput input{
 
-    width:500px;
-    height:500px;
+    border-radius:14px !important;
 
-    right:-180px;
-    top:-180px;
+    border:none !important;
 
-    border-radius:50%;
+    background:white !important;
 
-    background:
-    radial-gradient(
-        circle,
-        rgba(139,92,246,.35),
-        transparent 70%
-    );
+    box-shadow:
+    0 4px 12px rgba(0,0,0,.05);
+}
 
-    filter:blur(40px);
+/* =========================
+   REMOVE GLOW
+========================= */
+
+.hero::before,
+.hero::after{
+    display:none;
 }
 
 </style>
@@ -692,7 +673,7 @@ elif st.session_state.menu == "Pensiun":
             "Hitung Dana Pensiun",
             use_container_width=True
         )
-    if st.button("Hitung Dana Pensiun"):
+    if hitung_pensiun:
 
         sisa_tahun = usia_pensiun - usia
 
