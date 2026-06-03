@@ -7,12 +7,11 @@ st.set_page_config(
 )
 
 st.markdown("""
+<style>
 
 /* =========================
    FONT
 ========================= */
-
-<style>
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
@@ -365,6 +364,7 @@ if st.session_state.menu == "Dashboard":
         
         
 elif st.session_state.menu == "Bunga":
+
     if st.button("← Kembali ke Dashboard"):
         st.session_state.menu = "Dashboard"
         st.rerun()
@@ -372,19 +372,20 @@ elif st.session_state.menu == "Bunga":
     st.markdown("""
     <div class="hero">
         <div class="hero-title">
-        Bunga Majemuk
+            Bunga Majemuk
         </div>
 
         <div class="hero-sub">
-        Menghitung pertumbuhan investasi
-        berdasarkan bunga majemuk.
+            Menghitung pertumbuhan investasi berdasarkan bunga majemuk.
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    col1,col2 = st.columns(2)
+    st.write("")
 
-    with col1:
+    left, center, right = st.columns([1,2,1])
+
+    with center:
 
         modal = st.number_input(
             "Modal Awal",
@@ -401,12 +402,14 @@ elif st.session_state.menu == "Bunga":
             min_value=0.0
         )
 
-        hitung = st.button("Hitung")
+        hitung = st.button(
+            "Hitung",
+            use_container_width=True
+        )
 
     if hitung:
 
         hasil = modal * (1+bunga/100)**waktu
-
         keuntungan = hasil - modal
 
         persen = (
@@ -415,31 +418,32 @@ elif st.session_state.menu == "Bunga":
             else 0
         )
 
-        st.markdown(f"""
-        <div class="result">
+        result_col = st.columns([1,2,1])[1]
 
-        <div class="result-title">
-        HASIL PERHITUNGAN
-        </div>
+        with result_col:
+            st.markdown(f"""
+            <div class="result">
 
-        <div class="result-value">
-        Rp {hasil:,.0f}
-        </div>
+            <div class="result-title">
+            HASIL PERHITUNGAN
+            </div>
 
-        <hr>
+            <div class="result-value">
+            Rp {hasil:,.0f}
+            </div>
 
-        <p style="color:white;">
-        Keuntungan :
-        Rp {keuntungan:,.0f}
-        </p>
+            <hr>
 
-        <p style="color:white;">
-        Pertumbuhan :
-        {persen:.2f}%
-        </p>
+            <p style="color:white;font-size:18px;">
+            Keuntungan : Rp {keuntungan:,.0f}
+            </p>
 
-        </div>
-        """, unsafe_allow_html=True)
+            <p style="color:white;font-size:18px;">
+            Pertumbuhan : {persen:.2f}%
+            </p>
+
+            </div>
+            """, unsafe_allow_html=True)
 
 elif st.session_state.menu == "FV":
     if st.button("← Kembali ke Dashboard"):
@@ -459,41 +463,53 @@ elif st.session_state.menu == "FV":
     </div>
     """, unsafe_allow_html=True)
 
-    pv = st.number_input(
-        "Nilai Saat Ini",
-        min_value=0.0
-    )
+    st.write("")
 
-    bunga = st.number_input(
-        "Suku Bunga (%)",
-        min_value=0.0,
-        key="fv_bunga"
-    )
-
-    tahun = st.number_input(
-        "Periode (tahun)",
-        min_value=0.0,
-        key="fv_tahun"
-    )
-
-    if st.button("Hitung Future Value"):
-
+    left, center, right = st.columns([1,2,1])
+    
+    with center:
+    
+        pv = st.number_input(
+            "Nilai Saat Ini",
+            min_value=0.0
+        )
+    
+        bunga = st.number_input(
+            "Suku Bunga (%)",
+            min_value=0.0,
+            key="fv_bunga"
+        )
+    
+        tahun = st.number_input(
+            "Periode (tahun)",
+            min_value=0.0,
+            key="fv_tahun"
+        )
+    
+        hitung_fv = st.button(
+            "Hitung Future Value",
+            use_container_width=True
+        )
+    
+    if hitung_fv:
+    
         fv = pv * (1+bunga/100)**tahun
-
-        st.markdown(f"""
-        <div class="result">
-
-        <div class="result-title">
-        NILAI MASA DEPAN
-        </div>
-
-        <div class="result-value">
-        Rp {fv:,.0f}
-        </div>
-
-        </div>
-        """, unsafe_allow_html=True)
-
+    
+        with st.columns([1,2,1])[1]:
+    
+            st.markdown(f"""
+            <div class="result">
+    
+            <div class="result-title">
+            NILAI MASA DEPAN
+            </div>
+    
+            <div class="result-value">
+            Rp {fv:,.0f}
+            </div>
+    
+            </div>
+            """, unsafe_allow_html=True)
 elif st.session_state.menu == "Target":
     if st.button("← Kembali ke Dashboard"):
         st.session_state.menu = "Dashboard"
@@ -512,49 +528,54 @@ elif st.session_state.menu == "Target":
     </div>
     """, unsafe_allow_html=True)
 
-    target = st.text_input(
-        "Nama Target"
-    )
+    st.write("")
 
-    harga = st.number_input(
-        "Harga Target",
-        min_value=0.0
-    )
-
-    bulan = st.number_input(
-        "Jangka Waktu (bulan)",
-        min_value=1
-    )
-
-    if st.button("Hitung Target"):
-
+    left, center, right = st.columns([1,2,1])
+    
+    with center:
+    
+        target = st.text_input(
+            "Nama Target"
+        )
+    
+        harga = st.number_input(
+            "Harga Target",
+            min_value=0.0
+        )
+    
+        bulan = st.number_input(
+            "Jangka Waktu (bulan)",
+            min_value=1
+        )
+    
+        hitung_target = st.button(
+            "Hitung Target",
+            use_container_width=True
+        )
+    
+    if hitung_target:
+    
         tabungan = harga / bulan
-
-        st.markdown(f"""
-        <div class="result">
-
-        <div class="result-title">
-        TABUNGAN PER BULAN
-        </div>
-
-        <div class="result-value">
-        Rp {tabungan:,.0f}
-        </div>
-
-        <hr>
-
-        <p style="color:white;">
-        Untuk mencapai target
-        <b>{target}</b>
-        senilai Rp {harga:,.0f}
-        dalam {bulan} bulan,
-        diperlukan tabungan
-        Rp {tabungan:,.0f}
-        setiap bulan.
-        </p>
-
-        </div>
-        """, unsafe_allow_html=True)
+    
+        with st.columns([1,2,1])[1]:
+    
+            st.markdown(f"""
+            <div class="result">
+    
+            <div class="result-title">
+            TABUNGAN PER BULAN
+            </div>
+    
+            <div class="result-value">
+            Rp {tabungan:,.0f}
+            </div>
+    
+            <p style="color:white;margin-top:20px;">
+            Target: {target}
+            </p>
+    
+            </div>
+            """, unsafe_allow_html=True)
 
 elif st.session_state.menu == "Darurat":
     if st.button("← Kembali ke Dashboard"):
@@ -574,32 +595,43 @@ elif st.session_state.menu == "Darurat":
     </div>
     """, unsafe_allow_html=True)
 
-    pengeluaran = st.number_input(
-        "Pengeluaran Bulanan",
-        min_value=0.0
-    )
+    st.write("")
 
-    status = st.selectbox(
-        "Status",
-        [
-            "Belum Menikah",
-            "Menikah",
-            "Menikah + Anak"
-        ]
-    )
+    left, center, right = st.columns([1,2,1])
+    
+    with center:
+    
+        pengeluaran = st.number_input(
+            "Pengeluaran Bulanan",
+            min_value=0.0
+        )
+    
+        status = st.selectbox(
+            "Status",
+            [
+                "Belum Menikah",
+                "Menikah",
+                "Menikah + Anak"
+            ]
+        )
+    
+        hitung_darurat = st.button(
+            "Hitung Dana Darurat",
+            use_container_width=True
+        )
 
-    if st.button("Hitung Dana Darurat"):
+    if hitung_darurat:
 
-        if status == "Belum Menikah":
-            faktor = 6
+    if status == "Belum Menikah":
+        faktor = 6
+    elif status == "Menikah":
+        faktor = 9
+    else:
+        faktor = 12
 
-        elif status == "Menikah":
-            faktor = 9
+    dana = pengeluaran * faktor
 
-        else:
-            faktor = 12
-
-        dana = pengeluaran * faktor
+    with st.columns([1,2,1])[1]:
 
         st.markdown(f"""
         <div class="result">
@@ -612,19 +644,9 @@ elif st.session_state.menu == "Darurat":
         Rp {dana:,.0f}
         </div>
 
-        <hr>
-
-        <p style="color:white;">
-        Berdasarkan status
-        <b>{status}</b>,
-        kebutuhan dana darurat ideal
-        adalah sebesar
-        Rp {dana:,.0f}.
-        </p>
-
         </div>
         """, unsafe_allow_html=True)
-
+    
 elif st.session_state.menu == "Pensiun":
     if st.button("← Kembali ke Dashboard"):
         st.session_state.menu = "Dashboard"
@@ -643,21 +665,31 @@ elif st.session_state.menu == "Pensiun":
     </div>
     """, unsafe_allow_html=True)
 
-    usia = st.number_input(
-        "Usia Saat Ini",
-        min_value=1
-    )
+    st.write("")
 
-    usia_pensiun = st.number_input(
-        "Usia Pensiun",
-        min_value=usia+1
-    )
-
-    target_dana = st.number_input(
-        "Target Dana Pensiun",
-        min_value=0.0
-    )
-
+    left, center, right = st.columns([1,2,1])
+    
+    with center:
+    
+        usia = st.number_input(
+            "Usia Saat Ini",
+            min_value=1
+        )
+    
+        usia_pensiun = st.number_input(
+            "Usia Pensiun",
+            min_value=usia+1
+        )
+    
+        target_dana = st.number_input(
+            "Target Dana Pensiun",
+            min_value=0.0
+        )
+    
+        hitung_pensiun = st.button(
+            "Hitung Dana Pensiun",
+            use_container_width=True
+        )
     if st.button("Hitung Dana Pensiun"):
 
         sisa_tahun = usia_pensiun - usia
@@ -669,31 +701,31 @@ elif st.session_state.menu == "Pensiun":
             if total_bulan > 0
             else 0
         )
-
-        st.markdown(f"""
-        <div class="result">
-
-        <div class="result-title">
-        TABUNGAN PER BULAN
-        </div>
-
-        <div class="result-value">
-        Rp {tabungan:,.0f}
-        </div>
-
-        <hr>
-
-        <p style="color:white;">
-        Untuk mencapai dana pensiun
-        sebesar Rp {target_dana:,.0f}
-        pada usia {usia_pensiun} tahun,
-        diperlukan tabungan sekitar
-        Rp {tabungan:,.0f}
-        per bulan.
-        </p>
-
-        </div>
-        """, unsafe_allow_html=True)
+        with st.columns([1,2,1])[1]:
+            st.markdown(f"""
+            <div class="result">
+    
+            <div class="result-title">
+            TABUNGAN PER BULAN
+            </div>
+    
+            <div class="result-value">
+            Rp {tabungan:,.0f}
+            </div>
+    
+            <hr>
+    
+            <p style="color:white;">
+            Untuk mencapai dana pensiun
+            sebesar Rp {target_dana:,.0f}
+            pada usia {usia_pensiun} tahun,
+            diperlukan tabungan sekitar
+            Rp {tabungan:,.0f}
+            per bulan.
+            </p>
+    
+            </div>
+            """, unsafe_allow_html=True)
 
 st.markdown("""
 <br><br>
