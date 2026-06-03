@@ -515,12 +515,12 @@ elif st.session_state.menu == "Target":
         st.session_state.menu = "Dashboard"
         st.rerun()
 
-   st.markdown("""
+    st.markdown("""
     <div class="hero">
         <div class="hero-title">
             Target Keuangan
         </div>
-    
+
         <div class="hero-sub">
             Tentukan jumlah tabungan yang diperlukan
             untuk mencapai tujuan finansial.
@@ -531,9 +531,9 @@ elif st.session_state.menu == "Target":
     st.write("")
 
     left, center, right = st.columns([1,2,1])
-    
+
     with center:
-    
+
         target = st.text_input(
             "Nama Target"
         )
