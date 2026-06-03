@@ -869,22 +869,12 @@ elif st.session_state.menu == "Pensiun":
     if st.button("← Kembali ke Dashboard"):
         st.session_state.menu = "Dashboard"
         st.rerun()
-    st.error("AKU DI SINI")
-    st.markdown(
-    """
+    st.markdown("""
     <div class="hero">
-        <div class="hero-title">
-            Dana Pensiun
-        </div>
-    
-        <div class="hero-sub">
-            Rencanakan kebutuhan dana
-            untuk masa pensiun.
-        </div>
+    <h1>Dana Pensiun</h1>
+    <p>Rencanakan kebutuhan dana untuk masa pensiun.</p>
     </div>
-    """,
-    unsafe_allow_html=True
-    )
+    """, unsafe_allow_html=True)
 
     st.write("")
 
