@@ -384,7 +384,7 @@ box-shadow:
 background:
 rgba(255,255,255,.05) !important;
 
-color:white !important;
+color:#312E81 !important;
 
 border:
 1px solid rgba(255,255,255,.10) !important;
@@ -588,17 +588,6 @@ elif st.session_state.menu == "Bunga":
     <div class="hero">
     <h1>Bunga Majemuk</h1>
     <p>Menghitung pertumbuhan investasi berdasarkan bunga majemuk.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="hero">
-        <div class="hero-title">
-            Bunga Majemuk
-        </div>
-
-        <div class="hero-sub">
-            Menghitung pertumbuhan investasi berdasarkan bunga majemuk.
-        </div>
     </div>
     """, unsafe_allow_html=True)
 
