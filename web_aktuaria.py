@@ -507,7 +507,7 @@ if st.session_state.menu == "Dashboard":
     
     with col2:
         st.markdown("""
-        <div class="card">
+        <div class="card card-blue">
             <h3>NILAI MASA DEPAN</h3>
             <p>Proyeksi nilai investasi pada masa mendatang.</p>
         </div>
