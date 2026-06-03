@@ -346,18 +346,17 @@ if st.session_state.menu == "Dashboard":
     col1,col2,col3 = st.columns(3)
 
     with col1:
-    
-    ```
-    st.markdown("""
-    <div class="card">
-        <h3>BUNGA MAJEMUK</h3>
-    
-        <p>
-        Menghitung pertumbuhan investasi
-        berdasarkan bunga majemuk.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+        ```
+        st.markdown("""
+        <div class="card">
+            <h3>BUNGA MAJEMUK</h3>
+        
+            <p>
+            Menghitung pertumbuhan investasi
+            berdasarkan bunga majemuk.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
     
     if st.button("Coba Sekarang →", key="bunga"):
         st.session_state.menu = "Bunga"
@@ -365,18 +364,17 @@ if st.session_state.menu == "Dashboard":
     ```
     
     with col2:
-    
-    ```
-    st.markdown("""
-    <div class="card">
-        <h3>NILAI MASA DEPAN</h3>
-    
-        <p>
-        Proyeksi nilai investasi
-        pada masa mendatang.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+        ```
+        st.markdown("""
+        <div class="card">
+            <h3>NILAI MASA DEPAN</h3>
+        
+            <p>
+            Proyeksi nilai investasi
+            pada masa mendatang.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
     
     if st.button("Coba Sekarang →", key="fv"):
         st.session_state.menu = "FV"
@@ -384,18 +382,17 @@ if st.session_state.menu == "Dashboard":
     ```
     
     with col3:
-    
     ```
-    st.markdown("""
-    <div class="card">
-        <h3>TARGET KEUANGAN</h3>
-    
-        <p>
-        Menentukan kebutuhan tabungan
-        untuk mencapai tujuan finansial.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+        st.markdown("""
+        <div class="card">
+            <h3>TARGET KEUANGAN</h3>
+        
+            <p>
+            Menentukan kebutuhan tabungan
+            untuk mencapai tujuan finansial.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
     
     if st.button("Coba Sekarang →", key="target"):
         st.session_state.menu = "Target"
@@ -407,18 +404,17 @@ if st.session_state.menu == "Dashboard":
     col4,col5 = st.columns(2)
     
     with col4:
-    
     ```
-    st.markdown("""
-    <div class="card">
-        <h3>DANA DARURAT</h3>
-    
-        <p>
-        Menghitung kebutuhan dana
-        cadangan keuangan.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+        st.markdown("""
+        <div class="card">
+            <h3>DANA DARURAT</h3>
+        
+            <p>
+            Menghitung kebutuhan dana
+            cadangan keuangan.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
     
     if st.button("Coba Sekarang →", key="darurat"):
         st.session_state.menu = "Darurat"
@@ -426,18 +422,17 @@ if st.session_state.menu == "Dashboard":
     ```
     
     with col5:
-    
     ```
-    st.markdown("""
-    <div class="card">
-        <h3>DANA PENSIUN</h3>
-    
-        <p>
-        Perencanaan dana pensiun
-        jangka panjang.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+        st.markdown("""
+        <div class="card">
+            <h3>DANA PENSIUN</h3>
+        
+            <p>
+            Perencanaan dana pensiun
+            jangka panjang.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
     
     if st.button("Coba Sekarang →", key="pensiun"):
         st.session_state.menu = "Pensiun"
