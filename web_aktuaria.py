@@ -362,20 +362,21 @@ if st.session_state.menu == "Dashboard":
             st.session_state.menu = "Pensiun"
             st.rerun()
 
-st.markdown("""
-<div class="result">
-
-<div class="result-title">
-FINANCIAL INSIGHT
-</div>
-
-<div class="result-value">
-Perencanaan yang baik dimulai dari
-langkah kecil yang konsisten.
-</div>
-
-</div>
-""", unsafe_allow_html=True)
+        st.markdown("""
+        <div class="result">
+        
+        <div class="result-title">
+        FINANCIAL INSIGHT
+        </div>
+        
+        <div class="result-value">
+        Perencanaan yang baik dimulai dari
+        langkah kecil yang konsisten.
+        </div>
+        
+        </div>
+        """, unsafe_allow_html=True)
+        
 elif st.session_state.menu == "Bunga":
     if st.button("← Kembali ke Dashboard"):
         st.session_state.menu = "Dashboard"
