@@ -291,8 +291,8 @@ if st.session_state.menu == "Dashboard":
         """, unsafe_allow_html=True)
 
         if st.button("Buka", key="bunga"):
-        st.session_state.menu = "Bunga"
-        st.rerun()
+            st.session_state.menu = "Bunga"
+            st.rerun()
         
     with col2:
         st.markdown("""
@@ -309,8 +309,8 @@ if st.session_state.menu == "Dashboard":
         """, unsafe_allow_html=True)
 
         if st.button("Buka", key="target"):
-        st.session_state.menu = "Target"
-        st.rerun()
+            st.session_state.menu = "Target"
+            st.rerun()
         
     with col3:
         st.markdown("""
@@ -327,8 +327,8 @@ if st.session_state.menu == "Dashboard":
         """, unsafe_allow_html=True)
 
         if st.button("Buka", key="pensiun"):
-        st.session_state.menu = "Pensiun"
-        st.rerun()
+            st.session_state.menu = "Pensiun"
+            st.rerun()
         
 elif st.session_state.menu == "Bunga":
     if st.button("← Kembali ke Dashboard"):
