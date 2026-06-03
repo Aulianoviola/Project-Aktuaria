@@ -55,25 +55,15 @@ section[data-testid="stSidebar"] *{
 
 .hero{
 
-    background:
-    linear-gradient(
-        135deg,
-        #FFFFFF,
-        #F5EEFF
-    );
+background-image:
+url("https://share.google/VaT3e9S1k2R2ae27p");
 
-    border-radius:35px;
+background-repeat:no-repeat;
 
-    padding:70px;
+background-position:right center;
 
-    border:1px solid #EEE6FA;
-
-    box-shadow:
-    0 15px 40px rgba(111,75,216,.08);
-
-    margin-bottom:15px;
+background-size:320px;
 }
-
 .hero-title{
 
     font-size:72px;
