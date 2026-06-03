@@ -6,31 +6,42 @@ st.set_page_config(
     layout="wide"
 )
 
-# ==========================
-# CUSTOM CSS
-# ==========================
 st.markdown("""
 <style>
 
-/* Import Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* =========================
+   FONT
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 html, body, [class*="css"]{
     font-family:'Poppins',sans-serif;
 }
 
-/* Background */
+/* =========================
+   BACKGROUND
+========================= */
+
 .stApp{
+
     background:
     linear-gradient(
         135deg,
-        #0F172A 0%,
-        #1E1B4B 50%,
-        #312E81 100%
+        #030314 0%,
+        #0B0B3B 25%,
+        #17115A 50%,
+        #24176F 75%,
+        #35208F 100%
     );
+
+    color:white;
 }
 
-/* Hilangkan header streamlit */
+/* =========================
+   STREAMLIT
+========================= */
+
 header{
     visibility:hidden;
 }
@@ -43,189 +54,243 @@ footer{
     visibility:hidden;
 }
 
-/* Navbar */
+/* =========================
+   NAVBAR
+========================= */
+
 .navbar{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 
-    padding:20px 40px;
-
-    background:rgba(255,255,255,0.05);
-
-    backdrop-filter:blur(12px);
-
-    border-radius:20px;
+    padding:20px 35px;
 
     margin-bottom:30px;
 
-    border:1px solid rgba(255,255,255,0.08);
+    background:
+    rgba(255,255,255,0.04);
+
+    backdrop-filter:
+    blur(20px);
+
+    border-radius:24px;
+
+    border:
+    1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+    0 0 30px rgba(139,92,246,.15);
 }
 
 .logo{
+
     color:white;
-    font-size:28px;
-    font-weight:700;
+
+    font-size:32px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
 }
 
 .tagline{
-    color:#cbd5e1;
+
+    color:#CBD5E1;
+
     font-size:14px;
 }
 
-/* Hero */
+/* =========================
+   HERO
+========================= */
 
 .hero{
 
     text-align:center;
 
-    padding:60px 40px;
+    padding:80px 40px;
 
     border-radius:30px;
 
     background:
     rgba(255,255,255,0.05);
 
-    backdrop-filter:blur(15px);
+    backdrop-filter:
+    blur(20px);
 
     border:
-    1px solid rgba(255,255,255,0.08);
+    1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+    0 0 40px rgba(99,102,241,.15);
 }
 
 .hero-title{
 
-    font-size:52px;
+    font-size:72px;
 
-    font-weight:700;
+    font-weight:800;
 
     color:white;
 
-    margin-bottom:10px;
+    letter-spacing:2px;
+
+    margin-bottom:20px;
 }
 
 .hero-sub{
 
-    color:#cbd5e1;
+    color:#CBD5E1;
 
     font-size:22px;
 
-    max-width:700px;
+    max-width:900px;
 
     margin:auto;
 
     line-height:1.8;
 }
 
-/* Cards */
+/* =========================
+   CARD
+========================= */
 
 .card{
-    background:white;
 
-    border-radius:24px;
+    background:
+    rgba(255,255,255,0.06);
+
+    backdrop-filter:
+    blur(20px);
+
+    border-radius:28px;
 
     padding:30px;
 
-    min-height:220px;
+    height:240px;
 
-    transition:all .3s ease;
+    border:
+    1px solid rgba(255,255,255,.08);
+
+    transition:all .4s ease;
 
     cursor:pointer;
 
     box-shadow:
-    0 10px 30px rgba(0,0,0,.15);
+    0 0 25px rgba(0,0,0,.25);
 }
 
 .card:hover{
 
     transform:
-    translateY(-8px);
+    translateY(-10px);
 
     border:
     1px solid #8B5CF6;
 
     box-shadow:
-    0px 0px 30px rgba(
-    139,92,246,.4
-    );
+    0 0 20px rgba(139,92,246,.6),
+    0 0 40px rgba(59,130,246,.4);
 }
 
 .card-title{
 
     color:white;
 
-    font-size:24px;
+    font-size:28px;
 
-    font-weight:600;
+    font-weight:700;
 
-    margin-bottom:15px;
+    margin-bottom:20px;
 }
 
 .card-desc{
-    color:#6B7280;
-    line-height:1.8;
+
+    color:#CBD5E1;
+
+    line-height:1.9;
+
+    font-size:16px;
 }
 
-/* Result Card */
+/* =========================
+   RESULT CARD
+========================= */
 
 .result{
 
     background:
-    rgba(255,255,255,0.08);
+    rgba(255,255,255,0.06);
 
-    padding:30px;
+    backdrop-filter:
+    blur(20px);
 
-    border-radius:24px;
+    padding:35px;
 
-    border-left:
-    6px solid #8B5CF6;
+    border-radius:28px;
 
-    margin-top:25px;
+    border:
+    1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+    0 0 30px rgba(139,92,246,.2);
+
+    margin-top:30px;
 }
 
 .result-title{
 
-    color:#a78bfa;
+    color:#A78BFA;
 
     font-size:14px;
 
-    letter-spacing:2px;
+    letter-spacing:3px;
+
+    text-transform:uppercase;
 }
 
 .result-value{
 
     color:white;
 
-    font-size:42px;
+    font-size:46px;
 
-    font-weight:700;
+    font-weight:800;
 
-    margin-top:10px;
+    margin-top:15px;
 }
 
-/* Button */
+/* =========================
+   BUTTON
+========================= */
 
 .stButton > button{
 
     width:100%;
 
-    height:55px;
+    height:58px;
 
     border:none;
 
-    border-radius:14px;
-
-    background:
-    linear-gradient(
-    90deg,
-    #7C3AED,
-    #8B5CF6
-    );
+    border-radius:16px;
 
     color:white;
 
+    font-size:16px;
+
     font-weight:600;
 
-    transition:.3s;
+    background:
+    linear-gradient(
+        90deg,
+        #7C3AED,
+        #A855F7
+    );
+
+    transition:all .3s ease;
 }
 
 .stButton > button:hover{
@@ -234,15 +299,46 @@ footer{
     translateY(-3px);
 
     box-shadow:
-    0px 0px 25px rgba(
-    139,92,246,.5
+    0 0 20px rgba(168,85,247,.7),
+    0 0 40px rgba(59,130,246,.4);
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.stNumberInput,
+.stTextInput,
+.stSelectbox{
+
+    border-radius:18px;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#09091F;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:
+    linear-gradient(
+        #7C3AED,
+        #3B82F6
     );
+
+    border-radius:20px;
 }
 
 </style>
 """, unsafe_allow_html=True)
-
-
 # ==========================
 # SESSION STATE
 # ==========================
@@ -270,7 +366,7 @@ if st.session_state.menu == "Dashboard":
     st.write("")
     st.write("")
 
-    col1,col2,col3,col4,col5 = st.columns(5)
+    col1,col2,col3 = st.columns(3)
 
     with col1:
         st.markdown("""
@@ -325,6 +421,8 @@ if st.session_state.menu == "Dashboard":
         if st.button("Buka", key="target"):
             st.session_state.menu = "Target"
             st.rerun()
+
+    col4,col5 = st.columns(2)
 
     with col4:
         st.markdown("""
