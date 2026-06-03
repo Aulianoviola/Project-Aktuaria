@@ -13,305 +13,187 @@ st.markdown("""
    FONT
 ========================= */
 
+<style>
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 html, body, [class*="css"]{
     font-family:'Poppins',sans-serif;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
-
+/* Background */
 .stApp{
-
-background:
-linear-gradient(
-135deg,
-#F8FAFC 0%,
-#EEF2FF 50%,
-#F5F3FF 100%
-);
+    background:
+    linear-gradient(
+        135deg,
+        #f8faff 0%,
+        #eef2ff 40%,
+        #ede9fe 100%
+    );
 }
 
-/* =========================
-   STREAMLIT
-========================= */
+/* Hero */
+.hero{
+    background:white;
+    border-radius:35px;
+    padding:70px;
+    box-shadow:
+    0 25px 50px rgba(99,102,241,.10);
 
-header{
-    visibility:hidden;
+    position:relative;
+    overflow:hidden;
 }
 
-#MainMenu{
-    visibility:hidden;
-}
+.hero::before{
+    content:"";
+    position:absolute;
 
-footer{
-    visibility:hidden;
-}
+    width:400px;
+    height:400px;
 
-/* =========================
-   NAVBAR
-========================= */
-
-.navbar{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:20px 35px;
-
-    margin-bottom:30px;
+    right:-120px;
+    top:-120px;
 
     background:
-    rgba(255,255,255,0.04);
-
-    backdrop-filter:
-    blur(20px);
-
-    border-radius:24px;
-
-    border:
-    1px solid rgba(255,255,255,.08);
-
-    box-shadow:
-    0 0 30px rgba(139,92,246,.15);
+    radial-gradient(
+        circle,
+        rgba(139,92,246,.20),
+        transparent 70%
+    );
 }
 
-.logo{
-
-    color:white;
-
-    font-size:32px;
-
-    font-weight:800;
-
-    letter-spacing:2px;
-}
-
-.tagline{
-
-    color:#CBD5E1;
-
-    font-size:14px;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-
-    background:white;
-    
-    padding:60px 40px;
-    
-    border-radius:30px;
-    
-    box-shadow:
-    0 10px 25px rgba(0,0,0,.08);
-}
 .hero-title{
-
-    font-size:56px;
-    
+    font-size:72px;
     font-weight:800;
-    
     color:#111827;
 }
 
 .hero-sub{
-
+    font-size:22px;
     color:#6B7280;
-    
-    font-size:20px;
+    max-width:700px;
 }
 
-/* =========================
-   CARD
-========================= */
-
+/* CARD */
 .card{
+    background:
+    rgba(255,255,255,.8);
 
-    background:white;
+    backdrop-filter:blur(20px);
 
-    border-radius:28px;
+    border-radius:30px;
 
-    padding:35px;
+    padding:30px;
 
-    height:260px;
+    min-height:240px;
 
-    transition:.35s;
+    border:
+    1px solid rgba(255,255,255,.8);
 
     box-shadow:
-    0 8px 25px rgba(0,0,0,.08);
+    0 15px 40px rgba(99,102,241,.08);
 
-    border:none;
+    transition:.35s;
 }
 
 .card:hover{
-
-    transform:
-    translateY(-10px);
-
-    box-shadow:
-    0 20px 40px rgba(0,0,0,.15);
+    transform:translateY(-8px);
 }
 
 .card h3{
-
-```
-color:#111827;
-
-font-size:22px;
-
-font-weight:800;
-
-margin-bottom:18px;
-```
-
+    color:#111827;
+    font-size:24px;
+    font-weight:700;
 }
 
 .card p{
-
-```
-color:#6B7280;
-
-line-height:1.8;
-
-font-size:15px;
-```
-
+    color:#6B7280;
+    line-height:1.8;
 }
 
-.card:hover .card-link{
+/* Statistic Card */
+.stat-card{
+    background:white;
 
-    transform:translateX(8px);
+    border-radius:25px;
 
-    color:#4F46E5;
-}
-/* =========================
-   RESULT CARD
-========================= */
+    padding:25px;
 
-.result{
-
-    background:
-    rgba(255,255,255,0.06);
-
-    backdrop-filter:
-    blur(20px);
-
-    padding:35px;
-
-    border-radius:28px;
-
-    border:
-    1px solid rgba(255,255,255,.08);
+    text-align:center;
 
     box-shadow:
-    0 0 30px rgba(139,92,246,.2);
+    0 10px 30px rgba(0,0,0,.05);
+}
 
-    margin-top:30px;
+.stat-number{
+    font-size:28px;
+    font-weight:800;
+    color:#4F46E5;
+}
+
+.stat-title{
+    color:#6B7280;
+}
+
+/* Result */
+.result{
+    background:
+    linear-gradient(
+        135deg,
+        #4f46e5,
+        #7c3aed
+    );
+
+    border-radius:35px;
+
+    padding:45px;
+
+    color:white;
+
+    box-shadow:
+    0 20px 50px rgba(124,58,237,.30);
 }
 
 .result-title{
-
-    color:#A78BFA;
-
-    font-size:14px;
-
-    letter-spacing:3px;
-
-    text-transform:uppercase;
+    color:#ddd6fe;
+    letter-spacing:2px;
 }
 
 .result-value{
-
     color:white;
-
-    font-size:46px;
-
+    font-size:60px;
     font-weight:800;
-
-    margin-top:15px;
 }
 
-/* =========================
-   BUTTON
-========================= */
-
+/* Button */
 .stButton > button{
-
-    width:100%;
-
-    height:58px;
 
     border:none;
 
-    border-radius:16px;
+    border-radius:18px;
 
-    color:white;
-
-    font-size:16px;
-
-    font-weight:600;
+    height:55px;
 
     background:
     linear-gradient(
-        90deg,
-        #7C3AED,
-        #A855F7
+        135deg,
+        #6366F1,
+        #8B5CF6
     );
 
-    transition:all .3s ease;
+    color:white;
+
+    font-weight:600;
+
+    transition:.3s;
 }
 
 .stButton > button:hover{
 
-    transform:
-    translateY(-3px);
+    transform:translateY(-3px);
 
     box-shadow:
-    0 0 20px rgba(168,85,247,.7),
-    0 0 40px rgba(59,130,246,.4);
-}
-
-/* =========================
-   INPUT
-========================= */
-
-.stNumberInput,
-.stTextInput,
-.stSelectbox{
-
-    border-radius:18px;
-}
-
-/* =========================
-   SCROLLBAR
-========================= */
-
-::-webkit-scrollbar{
-    width:10px;
-}
-
-::-webkit-scrollbar-track{
-    background:#09091F;
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:
-    linear-gradient(
-        #7C3AED,
-        #3B82F6
-    );
-
-    border-radius:20px;
+    0 10px 30px rgba(139,92,246,.40);
 }
 
 </style>
@@ -326,17 +208,18 @@ if st.session_state.menu == "Dashboard":
 
     st.markdown("""
     <div class="hero">
-
+    
     <div class="hero-title">
     AKTUARIA
     </div>
-
+    
+    <br>
+    
     <div class="hero-sub">
-    Membantu merencanakan investasi,
-    target keuangan, dana darurat,
-    dan dana pensiun secara sederhana.
+    Kelola investasi, dana darurat, target keuangan,
+    dan perencanaan pensiun dalam satu dashboard modern.
     </div>
-
+    
     </div>
     """, unsafe_allow_html=True)
 
@@ -357,9 +240,9 @@ if st.session_state.menu == "Dashboard":
         </div>
         """, unsafe_allow_html=True)
     
-    if st.button("Coba Sekarang →", key="bunga"):
-        st.session_state.menu = "Bunga"
-        st.rerun()
+        if st.button("Coba Sekarang →", key="bunga"):
+            st.session_state.menu = "Bunga"
+            st.rerun()
     
     with col2:
         st.markdown("""
@@ -373,9 +256,9 @@ if st.session_state.menu == "Dashboard":
         </div>
         """, unsafe_allow_html=True)
     
-    if st.button("Coba Sekarang →", key="fv"):
-        st.session_state.menu = "FV"
-        st.rerun()
+        if st.button("Coba Sekarang →", key="fv"):
+            st.session_state.menu = "FV"
+            st.rerun()
     
     with col3:
         st.markdown("""
@@ -389,9 +272,9 @@ if st.session_state.menu == "Dashboard":
         </div>
         """, unsafe_allow_html=True)
     
-    if st.button("Coba Sekarang →", key="target"):
-        st.session_state.menu = "Target"
-        st.rerun()
+        if st.button("Coba Sekarang →", key="target"):
+            st.session_state.menu = "Target"
+            st.rerun()
     
     st.write("")
     
@@ -409,9 +292,9 @@ if st.session_state.menu == "Dashboard":
         </div>
         """, unsafe_allow_html=True)
     
-    if st.button("Coba Sekarang →", key="darurat"):
-        st.session_state.menu = "Darurat"
-        st.rerun()
+        if st.button("Coba Sekarang →", key="darurat"):
+            st.session_state.menu = "Darurat"
+            st.rerun()
     
     with col5:
         st.markdown("""
@@ -425,9 +308,9 @@ if st.session_state.menu == "Dashboard":
         </div>
         """, unsafe_allow_html=True)
     
-    if st.button("Coba Sekarang →", key="pensiun"):
-        st.session_state.menu = "Pensiun"
-        st.rerun()
+        if st.button("Coba Sekarang →", key="pensiun"):
+            st.session_state.menu = "Pensiun"
+            st.rerun()
         
     # ==========================
     # FINANCIAL INSIGHT
