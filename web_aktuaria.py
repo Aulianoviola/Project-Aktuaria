@@ -1,362 +1,297 @@
 import streamlit as st
-import math
 
-# =====================================
-# PAGE CONFIG
-# =====================================
 st.set_page_config(
-    page_title="Kalkulator Aktuaria",
-    page_icon="📈",
+    page_title="AKTUARIA",
     layout="wide"
 )
 
-# =====================================
-# CUSTOM CSS
-# =====================================
-
+# ==========================
+# CSS
+# ==========================
 st.markdown("""
 <style>
 
-/* Background */
 .stApp{
-    background: linear-gradient(
-        135deg,
-        #050816 0%,
-        #0b1026 30%,
-        #150f3f 70%,
-        #090b18 100%
-    );
-    color:white;
+    background-color:#F5F7FA;
 }
 
-/* Hide Streamlit */
-#MainMenu {visibility:hidden;}
-footer {visibility:hidden;}
-header {visibility:hidden;}
-
-/* Title */
 .main-title{
-    text-align:center;
-    font-size:60px;
-    font-weight:800;
-    color:white;
-
-    text-shadow:
-        0 0 10px #00d4ff,
-        0 0 20px #00d4ff,
-        0 0 40px #7f5cff;
+    color:#1E3A5F;
+    font-size:42px;
+    font-weight:bold;
 }
 
-/* Subtitle */
-.sub-title{
-    text-align:center;
-    color:#cfcfcf;
+.subtitle{
+    color:#6B7280;
     font-size:18px;
 }
 
-/* Hero */
-.hero{
-    padding:40px;
-    border-radius:25px;
-
-    background:rgba(255,255,255,.05);
-
-    backdrop-filter:blur(20px);
-
-    border:1px solid rgba(255,255,255,.1);
-
-    box-shadow:
-        0 0 30px rgba(0,212,255,.2);
-}
-
-/* Cards */
 .card{
-    padding:25px;
-
-    border-radius:20px;
-
-    background:rgba(255,255,255,.05);
-
-    backdrop-filter:blur(20px);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    transition:0.4s;
-
-    margin-bottom:20px;
-}
-
-.card:hover{
-    transform:translateY(-8px);
-
-    box-shadow:
-        0 0 20px #00d4ff,
-        0 0 40px #7f5cff;
-}
-
-/* Buttons */
-.stButton>button{
-
-    width:100%;
-    border:none;
-
+    background:white;
+    padding:20px;
     border-radius:15px;
-
-    padding:12px;
-
-    color:white;
-
-    font-weight:bold;
-
-    background:
-        linear-gradient(
-            90deg,
-            #7f5cff,
-            #00d4ff
-        );
-
-    box-shadow:
-        0 0 15px #7f5cff,
-        0 0 25px #00d4ff;
-
-    transition:.4s;
+    border:1px solid #E5E7EB;
+    box-shadow:0px 2px 8px rgba(0,0,0,0.08);
+    margin-bottom:15px;
 }
 
-.stButton>button:hover{
-    transform:translateY(-5px);
-}
-
-/* Inputs */
-
-[data-baseweb="input"]{
-    background:rgba(255,255,255,.05);
+.result{
+    background:#EFF6FF;
+    padding:20px;
     border-radius:15px;
-}
-
-/* Success Box */
-.stAlert{
-    border-radius:15px;
-}
-
-/* Floating Animation */
-
-@keyframes float{
-    0%{
-        transform:translateY(0px);
-    }
-
-    50%{
-        transform:translateY(-8px);
-    }
-
-    100%{
-        transform:translateY(0px);
-    }
-}
-
-.float{
-    animation:float 3s ease-in-out infinite;
+    border-left:5px solid #2563EB;
 }
 
 </style>
 """, unsafe_allow_html=True)
 
-# =====================================
-# MENU
-# =====================================
+# ==========================
+# SIDEBAR
+# ==========================
+menu = st.sidebar.radio(
+    "Menu",
+    [
+        "Dashboard",
+        "Bunga Majemuk",
+        "Nilai Masa Depan",
+        "Target Keuangan",
+        "Dana Darurat",
+        "Dana Pensiun"
+    ]
+)
 
-if "menu" not in st.session_state:
-    st.session_state.menu = "home"
+# ==========================
+# DASHBOARD
+# ==========================
+if menu == "Dashboard":
 
-with st.sidebar:
+    st.markdown(
+        '<p class="main-title">AKTUARIA</p>',
+        unsafe_allow_html=True
+    )
 
-    st.markdown("## 🚀 Navigation")
-
-    if st.button("🏠 Home"):
-        st.session_state.menu = "home"
-
-    if st.button("📈 Bunga Majemuk"):
-        st.session_state.menu = "bm"
-
-    if st.button("💰 Present Value"):
-        st.session_state.menu = "pv"
-
-    if st.button("📊 Future Value"):
-        st.session_state.menu = "fv"
-
-    if st.button("🧾 Anuitas"):
-        st.session_state.menu = "anuitas"
-
-# =====================================
-# HOME
-# =====================================
-
-if st.session_state.menu == "home":
-
-    st.markdown("""
-    <div class="hero float">
-
-    <h1 class="main-title">
-    📈 Kalkulator Aktuaria
-    </h1>
-
-    <p class="sub-title">
-    Future Value • Present Value • Anuitas • Bunga Majemuk
-    </p>
-
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.write("")
-    st.write("")
+    st.markdown(
+        '<p class="subtitle">Perhitungan Cerdas untuk Masa Depan</p>',
+        unsafe_allow_html=True
+    )
 
     col1,col2 = st.columns(2)
 
     with col1:
-
         st.markdown("""
         <div class="card">
-        <h3>📈 Bunga Majemuk</h3>
-        Hitung pertumbuhan investasi dengan bunga majemuk.
+        <h3>Bunga Majemuk</h3>
+        Menghitung pertumbuhan investasi berdasarkan bunga majemuk.
         </div>
         """, unsafe_allow_html=True)
 
-        if st.button("Masuk Bunga Majemuk"):
-            st.session_state.menu="bm"
-            st.rerun()
+        st.markdown("""
+        <div class="card">
+        <h3>Target Keuangan</h3>
+        Menentukan tabungan bulanan untuk mencapai tujuan finansial.
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown("""
+        <div class="card">
+        <h3>Dana Pensiun</h3>
+        Merencanakan kebutuhan dana di masa pensiun.
+        </div>
+        """, unsafe_allow_html=True)
 
     with col2:
-
         st.markdown("""
         <div class="card">
-        <h3>💰 Present Value</h3>
-        Menghitung nilai sekarang dari nilai masa depan.
+        <h3>Nilai Masa Depan</h3>
+        Menghitung proyeksi nilai investasi.
         </div>
         """, unsafe_allow_html=True)
 
-        if st.button("Masuk Present Value"):
-            st.session_state.menu="pv"
-            st.rerun()
-
-    col3,col4 = st.columns(2)
-
-    with col3:
-
         st.markdown("""
         <div class="card">
-        <h3>📊 Future Value</h3>
-        Hitung nilai investasi masa depan.
+        <h3>Dana Darurat</h3>
+        Menghitung kebutuhan dana cadangan.
         </div>
         """, unsafe_allow_html=True)
 
-        if st.button("Masuk Future Value"):
-            st.session_state.menu="fv"
-            st.rerun()
-
-    with col4:
-
-        st.markdown("""
-        <div class="card">
-        <h3>🧾 Anuitas</h3>
-        Perhitungan nilai anuitas.
-        </div>
-        """, unsafe_allow_html=True)
-
-        if st.button("Masuk Anuitas"):
-            st.session_state.menu="anuitas"
-            st.rerun()
-
-# =====================================
+# ==========================
 # BUNGA MAJEMUK
-# =====================================
+# ==========================
+elif menu == "Bunga Majemuk":
 
-elif st.session_state.menu == "bm":
+    st.title("Bunga Majemuk")
 
-    st.markdown("# 📈 Bunga Majemuk")
-
-    P = st.number_input("Modal Awal",0.0, value=1000.0)
-    r = st.number_input("Bunga (%)",0.0,value=5.0)
-    t = st.number_input("Tahun",0.0,value=1.0)
-
-    if st.button("🚀 Hitung"):
-
-        hasil = P*(1+r/100)**t
-
-        st.success(
-            f"Hasil Akhir = Rp {hasil:,.2f}"
-        )
-
-# =====================================
-# PRESENT VALUE
-# =====================================
-
-elif st.session_state.menu == "pv":
-
-    st.markdown("# 💰 Present Value")
-
-    fv = st.number_input("Future Value",0.0,100000000.0,10000.0)
-    r = st.number_input("Bunga (%)",0.0,100.0,5.0)
-    t = st.number_input("Tahun",0.0,100.0,1.0)
-
-    if st.button("🚀 Hitung PV"):
-
-        pv = fv/((1+r/100)**t)
-
-        st.success(
-            f"PV = Rp {pv:,.2f}"
-        )
-
-# =====================================
-# FUTURE VALUE
-# =====================================
-
-elif st.session_state.menu == "fv":
-
-    st.markdown("# 📊 Future Value")
-
-    pv = st.number_input("Present Value",0.0,100000000.0,1000.0)
-    r = st.number_input("Bunga (%)",0.0,100.0,5.0)
-    t = st.number_input("Tahun",0.0,100.0,1.0)
-
-    if st.button("🚀 Hitung FV"):
-
-        fv = pv*((1+r/100)**t)
-
-        st.success(
-            f"FV = Rp {fv:,.2f}"
-        )
-
-# =====================================
-# ANUITAS
-# =====================================
-
-elif st.session_state.menu == "anuitas":
-
-    st.markdown("# 🧾 Anuitas")
-
-    pembayaran = st.number_input(
-        "Pembayaran per Periode",
-        value=1000.0
+    modal = st.number_input(
+        "Modal Awal",
+        min_value=0.0
     )
 
     bunga = st.number_input(
-        "Bunga (%)",
-        value=5.0
+        "Suku Bunga (%)",
+        min_value=0.0
     )
 
-    periode = st.number_input(
-        "Jumlah Periode",
-        value=5
+    waktu = st.number_input(
+        "Lama Investasi (tahun)",
+        min_value=0.0
     )
 
-    if st.button("🚀 Hitung Anuitas"):
+    if st.button("Hitung"):
 
-        r = bunga/100
+        hasil = modal * (1+bunga/100)**waktu
+        keuntungan = hasil - modal
+        persen = (keuntungan/modal)*100 if modal>0 else 0
 
-        hasil = pembayaran * (
-            (1-(1+r)**(-periode))/r
-        )
+        st.markdown(f"""
+        <div class="result">
+        <h3>Hasil Perhitungan</h3>
 
-        st.success(
-            f"Nilai Anuitas = Rp {hasil:,.2f}"
-        )
+        Nilai Akhir : Rp {hasil:,.0f}<br>
+        Keuntungan : Rp {keuntungan:,.0f}<br>
+        Pertumbuhan : {persen:.2f}%
+        </div>
+        """, unsafe_allow_html=True)
+
+# ==========================
+# NILAI MASA DEPAN
+# ==========================
+elif menu == "Nilai Masa Depan":
+
+    st.title("Nilai Masa Depan")
+
+    pv = st.number_input(
+        "Nilai Saat Ini",
+        min_value=0.0
+    )
+
+    bunga = st.number_input(
+        "Suku Bunga (%)",
+        min_value=0.0,
+        key="fv"
+    )
+
+    waktu = st.number_input(
+        "Periode (tahun)",
+        min_value=0.0,
+        key="fv2"
+    )
+
+    if st.button("Hitung"):
+
+        fv = pv*(1+bunga/100)**waktu
+
+        st.markdown(f"""
+        <div class="result">
+        <h3>Nilai Masa Depan</h3>
+
+        Rp {fv:,.0f}
+        </div>
+        """, unsafe_allow_html=True)
+
+# ==========================
+# TARGET KEUANGAN
+# ==========================
+elif menu == "Target Keuangan":
+
+    st.title("Target Keuangan")
+
+    target = st.text_input("Nama Target")
+
+    harga = st.number_input(
+        "Harga Target",
+        min_value=0.0
+    )
+
+    bulan = st.number_input(
+        "Jangka Waktu (bulan)",
+        min_value=1
+    )
+
+    if st.button("Hitung"):
+
+        tabungan = harga / bulan
+
+        st.markdown(f"""
+        <div class="result">
+        <h3>Tabungan Bulanan</h3>
+
+        Rp {tabungan:,.0f}
+        </div>
+        """, unsafe_allow_html=True)
+
+# ==========================
+# DANA DARURAT
+# ==========================
+elif menu == "Dana Darurat":
+
+    st.title("Dana Darurat")
+
+    pengeluaran = st.number_input(
+        "Pengeluaran Bulanan",
+        min_value=0.0
+    )
+
+    status = st.selectbox(
+        "Status",
+        [
+            "Belum Menikah",
+            "Menikah",
+            "Menikah + Anak"
+        ]
+    )
+
+    if st.button("Hitung"):
+
+        if status == "Belum Menikah":
+            faktor = 6
+        elif status == "Menikah":
+            faktor = 9
+        else:
+            faktor = 12
+
+        dana = pengeluaran * faktor
+
+        st.markdown(f"""
+        <div class="result">
+        <h3>Dana Darurat Ideal</h3>
+
+        Rp {dana:,.0f}
+        </div>
+        """, unsafe_allow_html=True)
+
+# ==========================
+# DANA PENSIUN
+# ==========================
+elif menu == "Dana Pensiun":
+
+    st.title("Dana Pensiun")
+
+    usia = st.number_input(
+        "Usia Saat Ini",
+        min_value=1
+    )
+
+    pensiun = st.number_input(
+        "Usia Pensiun",
+        min_value=usia+1
+    )
+
+    target = st.number_input(
+        "Target Dana Pensiun",
+        min_value=0.0
+    )
+
+    if st.button("Hitung"):
+
+        sisa_tahun = pensiun - usia
+        bulan = sisa_tahun * 12
+
+        tabungan = target / bulan
+
+        st.markdown(f"""
+        <div class="result">
+        <h3>Kebutuhan Tabungan Bulanan</h3>
+
+        Rp {tabungan:,.0f}
+        </div>
+        """, unsafe_allow_html=True)
