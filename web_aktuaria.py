@@ -584,7 +584,12 @@ elif st.session_state.menu == "Bunga":
     if st.button("← Kembali ke Dashboard"):
         st.session_state.menu = "Dashboard"
         st.rerun()
-
+    st.markdown("""
+    <div class="hero">
+    <h1>Bunga Majemuk</h1>
+    <p>Menghitung pertumbuhan investasi berdasarkan bunga majemuk.</p>
+    </div>
+    """, unsafe_allow_html=True)
     st.markdown("""
     <div class="hero">
         <div class="hero-title">
@@ -665,17 +670,10 @@ elif st.session_state.menu == "FV":
     if st.button("← Kembali ke Dashboard"):
         st.session_state.menu = "Dashboard"
         st.rerun()
-
     st.markdown("""
     <div class="hero">
-        <div class="hero-title">
-        Nilai Masa Depan
-        </div>
-
-        <div class="hero-sub">
-        Proyeksi nilai investasi
-        pada masa mendatang.
-        </div>
+    <h1>Nilai Masa Depan</h1>
+    <p>Proyeksi nilai investasi pada masa mendatang.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -730,17 +728,10 @@ elif st.session_state.menu == "Target":
     if st.button("← Kembali ke Dashboard"):
         st.session_state.menu = "Dashboard"
         st.rerun()
-
     st.markdown("""
     <div class="hero">
-        <div class="hero-title">
-            Target Keuangan
-        </div>
-
-        <div class="hero-sub">
-            Tentukan jumlah tabungan yang diperlukan
-            untuk mencapai tujuan finansial.
-        </div>
+    <h1>Target Keuangan</h1>
+    <p>Tentukan jumlah tabungan yang diperlukan untuk mencapai tujuan finansial.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -797,17 +788,10 @@ elif st.session_state.menu == "Darurat":
     if st.button("← Kembali ke Dashboard"):
         st.session_state.menu = "Dashboard"
         st.rerun()
-
     st.markdown("""
     <div class="hero">
-        <div class="hero-title">
-        Dana Darurat
-        </div>
-
-        <div class="hero-sub">
-        Menghitung kebutuhan dana cadangan
-        berdasarkan kondisi keuangan.
-        </div>
+    <h1>Dana Darurat</h1>
+    <p>Menghitung kebutuhan dana cadangan berdasarkan kondisi keuangan.</p>
     </div>
     """, unsafe_allow_html=True)
 
