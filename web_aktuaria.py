@@ -346,7 +346,6 @@ if st.session_state.menu == "Dashboard":
     col1,col2,col3 = st.columns(3)
 
     with col1:
-        ```
         st.markdown("""
         <div class="card">
             <h3>BUNGA MAJEMUK</h3>
@@ -361,10 +360,8 @@ if st.session_state.menu == "Dashboard":
     if st.button("Coba Sekarang →", key="bunga"):
         st.session_state.menu = "Bunga"
         st.rerun()
-    ```
     
     with col2:
-        ```
         st.markdown("""
         <div class="card">
             <h3>NILAI MASA DEPAN</h3>
@@ -379,10 +376,8 @@ if st.session_state.menu == "Dashboard":
     if st.button("Coba Sekarang →", key="fv"):
         st.session_state.menu = "FV"
         st.rerun()
-    ```
     
     with col3:
-    ```
         st.markdown("""
         <div class="card">
             <h3>TARGET KEUANGAN</h3>
@@ -397,14 +392,12 @@ if st.session_state.menu == "Dashboard":
     if st.button("Coba Sekarang →", key="target"):
         st.session_state.menu = "Target"
         st.rerun()
-    ```
     
     st.write("")
     
     col4,col5 = st.columns(2)
     
     with col4:
-    ```
         st.markdown("""
         <div class="card">
             <h3>DANA DARURAT</h3>
@@ -419,10 +412,8 @@ if st.session_state.menu == "Dashboard":
     if st.button("Coba Sekarang →", key="darurat"):
         st.session_state.menu = "Darurat"
         st.rerun()
-    ```
     
     with col5:
-    ```
         st.markdown("""
         <div class="card">
             <h3>DANA PENSIUN</h3>
@@ -437,8 +428,8 @@ if st.session_state.menu == "Dashboard":
     if st.button("Coba Sekarang →", key="pensiun"):
         st.session_state.menu = "Pensiun"
         st.rerun()
-    ```
-     # ==========================
+        
+    # ==========================
     # FINANCIAL INSIGHT
     # ==========================
     
