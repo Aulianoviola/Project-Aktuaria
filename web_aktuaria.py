@@ -332,8 +332,8 @@ if st.session_state.menu == "Dashboard":
         
 elif st.session_state.menu == "Bunga":
     if st.button("← Kembali ke Dashboard"):
-    st.session_state.menu = "Dashboard"
-    st.rerun()
+        st.session_state.menu = "Dashboard"
+        st.rerun()
 
     st.markdown("""
     <div class="hero">
@@ -409,8 +409,8 @@ elif st.session_state.menu == "Bunga":
 
 elif st.session_state.menu == "FV":
     if st.button("← Kembali ke Dashboard"):
-    st.session_state.menu = "Dashboard"
-    st.rerun()
+        st.session_state.menu = "Dashboard"
+        st.rerun()
 
     st.markdown("""
     <div class="hero">
@@ -462,8 +462,8 @@ elif st.session_state.menu == "FV":
 
 elif st.session_state.menu == "Target":
     if st.button("← Kembali ke Dashboard"):
-    st.session_state.menu = "Dashboard"
-    st.rerun()
+        st.session_state.menu = "Dashboard"
+        st.rerun()
 
     st.markdown("""
     <div class="hero">
@@ -524,8 +524,8 @@ elif st.session_state.menu == "Target":
 
 elif st.session_state.menu == "Darurat":
     if st.button("← Kembali ke Dashboard"):
-    st.session_state.menu = "Dashboard"
-    st.rerun()
+        st.session_state.menu = "Dashboard"
+        st.rerun()
 
     st.markdown("""
     <div class="hero">
@@ -593,8 +593,8 @@ elif st.session_state.menu == "Darurat":
 
 elif st.session_state.menu == "Pensiun":
     if st.button("← Kembali ke Dashboard"):
-    st.session_state.menu = "Dashboard"
-    st.rerun()
+        st.session_state.menu = "Dashboard"
+        st.rerun()
 
     st.markdown("""
     <div class="hero">
