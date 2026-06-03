@@ -517,14 +517,12 @@ elif st.session_state.menu == "Target":
 
     st.markdown("""
     <div class="hero">
-        <div class="hero-title">
-        Target Keuangan
-        </div>
-
-        <div class="hero-sub">
-        Tentukan jumlah tabungan yang diperlukan
-        untuk mencapai tujuan finansial.
-        </div>
+        <h1 class="hero-title">Target Keuangan</h1>
+    
+        <p class="hero-sub">
+            Tentukan jumlah tabungan yang diperlukan
+            untuk mencapai tujuan finansial.
+        </p>
     </div>
     """, unsafe_allow_html=True)
 
