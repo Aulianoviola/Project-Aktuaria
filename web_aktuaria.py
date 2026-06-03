@@ -79,7 +79,7 @@ footer{
 
     text-align:center;
 
-    padding:100px 40px;
+    padding:60px 40px;
 
     border-radius:30px;
 
@@ -94,7 +94,7 @@ footer{
 
 .hero-title{
 
-    font-size:70px;
+    font-size:52px;
 
     font-weight:700;
 
@@ -119,11 +119,7 @@ footer{
 /* Cards */
 
 .card{
-
-    background:
-    rgba(255,255,255,0.07);
-
-    backdrop-filter:blur(12px);
+    background:white;
 
     border-radius:24px;
 
@@ -131,10 +127,12 @@ footer{
 
     min-height:220px;
 
-    border:
-    1px solid rgba(255,255,255,0.08);
-
     transition:all .3s ease;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.15);
 }
 
 .card:hover{
@@ -163,9 +161,7 @@ footer{
 }
 
 .card-desc{
-
-    color:#cbd5e1;
-
+    color:#6B7280;
     line-height:1.8;
 }
 
@@ -274,7 +270,7 @@ if st.session_state.menu == "Dashboard":
     st.write("")
     st.write("")
 
-    col1,col2,col3 = st.columns(3)
+    col1,col2,col3,col4,col5 = st.columns(5)
 
     with col1:
         st.markdown("""
@@ -282,7 +278,7 @@ if st.session_state.menu == "Dashboard":
         <div class="card-title">
         Bunga Majemuk
         </div>
-
+        
         <div class="card-desc">
         Menghitung pertumbuhan investasi
         berdasarkan bunga majemuk.
@@ -293,8 +289,26 @@ if st.session_state.menu == "Dashboard":
         if st.button("Buka", key="bunga"):
             st.session_state.menu = "Bunga"
             st.rerun()
-        
+            
     with col2:
+        st.markdown("""
+        <div class="card">
+        <div class="card-title">
+        Nilai Masa Depan
+        </div>
+    
+        <div class="card-desc">
+        Proyeksi nilai investasi
+        pada masa mendatang.
+        </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+        if st.button("Masuk", key="fv"):
+            st.session_state.menu = "FV"
+            st.rerun()
+            
+    with col3:
         st.markdown("""
         <div class="card">
         <div class="card-title">
@@ -311,8 +325,26 @@ if st.session_state.menu == "Dashboard":
         if st.button("Buka", key="target"):
             st.session_state.menu = "Target"
             st.rerun()
-        
-    with col3:
+
+    with col4:
+        st.markdown("""
+        <div class="card">
+        <div class="card-title">
+        🛡 Dana Darurat
+        </div>
+    
+        <div class="card-desc">
+        Menghitung kebutuhan dana
+        cadangan berdasarkan kondisi
+        keuangan Anda.
+        </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+        if st.button("Masuk", key="darurat"):
+            st.session_state.menu = "Darurat"
+            st.rerun()
+    with col5:
         st.markdown("""
         <div class="card">
         <div class="card-title">
@@ -329,7 +361,21 @@ if st.session_state.menu == "Dashboard":
         if st.button("Buka", key="pensiun"):
             st.session_state.menu = "Pensiun"
             st.rerun()
-        
+
+st.markdown("""
+<div class="result">
+
+<div class="result-title">
+FINANCIAL INSIGHT
+</div>
+
+<div class="result-value">
+Perencanaan yang baik dimulai dari
+langkah kecil yang konsisten.
+</div>
+
+</div>
+""", unsafe_allow_html=True)
 elif st.session_state.menu == "Bunga":
     if st.button("← Kembali ke Dashboard"):
         st.session_state.menu = "Dashboard"
