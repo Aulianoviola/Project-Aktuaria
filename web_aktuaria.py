@@ -246,82 +246,6 @@ footer{
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown("""
-<div class="navbar">
-    <div>
-        <div class="logo">AKTUARIA</div>
-        <div class="tagline">
-            Perhitungan Cerdas untuk Masa Depan
-        </div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<div class="hero">
-
-<div class="hero-title">
-AKTUARIA
-</div>
-
-<div class="hero-sub">
-Membantu merencanakan investasi,
-target keuangan, dana darurat,
-dan dana pensiun secara sederhana.
-</div>
-
-</div>
-""", unsafe_allow_html=True)
-
-col1,col2,col3 = st.columns(3)
-
-with col1:
-    st.markdown("""
-    <div class="card">
-    <div class="card-title">
-    Bunga Majemuk
-    </div>
-
-    <div class="card-desc">
-    Menghitung pertumbuhan investasi
-    berdasarkan bunga majemuk.
-    </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-with col2:
-    st.markdown("""
-    <div class="card">
-    <div class="card-title">
-    Target Keuangan
-    </div>
-
-    <div class="card-desc">
-    Menentukan kebutuhan tabungan
-    untuk mencapai tujuan finansial.
-    </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-with col3:
-    st.markdown("""
-    <div class="card">
-    <div class="card-title">
-    Dana Pensiun
-    </div>
-
-    <div class="card-desc">
-    Merencanakan kebutuhan dana
-    untuk masa pensiun.
-    </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==========================
-# SESSION STATE
-# ==========================
-if "menu" not in st.session_state:
-    st.session_state.menu = "Dashboard"
 
 # ==========================
 # SESSION STATE
@@ -366,6 +290,10 @@ if st.session_state.menu == "Dashboard":
         </div>
         """, unsafe_allow_html=True)
 
+        if st.button("Buka", key="bunga"):
+        st.session_state.menu = "Bunga"
+        st.rerun()
+        
     with col2:
         st.markdown("""
         <div class="card">
@@ -380,6 +308,10 @@ if st.session_state.menu == "Dashboard":
         </div>
         """, unsafe_allow_html=True)
 
+        if st.button("Buka", key="target"):
+        st.session_state.menu = "Target"
+        st.rerun()
+        
     with col3:
         st.markdown("""
         <div class="card">
@@ -394,7 +326,14 @@ if st.session_state.menu == "Dashboard":
         </div>
         """, unsafe_allow_html=True)
 
+        if st.button("Buka", key="pensiun"):
+        st.session_state.menu = "Pensiun"
+        st.rerun()
+        
 elif st.session_state.menu == "Bunga":
+    if st.button("← Kembali ke Dashboard"):
+    st.session_state.menu = "Dashboard"
+    st.rerun()
 
     st.markdown("""
     <div class="hero">
@@ -469,6 +408,9 @@ elif st.session_state.menu == "Bunga":
         """, unsafe_allow_html=True)
 
 elif st.session_state.menu == "FV":
+    if st.button("← Kembali ke Dashboard"):
+    st.session_state.menu = "Dashboard"
+    st.rerun()
 
     st.markdown("""
     <div class="hero">
@@ -519,6 +461,9 @@ elif st.session_state.menu == "FV":
         """, unsafe_allow_html=True)
 
 elif st.session_state.menu == "Target":
+    if st.button("← Kembali ke Dashboard"):
+    st.session_state.menu = "Dashboard"
+    st.rerun()
 
     st.markdown("""
     <div class="hero">
@@ -578,6 +523,9 @@ elif st.session_state.menu == "Target":
         """, unsafe_allow_html=True)
 
 elif st.session_state.menu == "Darurat":
+    if st.button("← Kembali ke Dashboard"):
+    st.session_state.menu = "Dashboard"
+    st.rerun()
 
     st.markdown("""
     <div class="hero">
@@ -644,6 +592,9 @@ elif st.session_state.menu == "Darurat":
         """, unsafe_allow_html=True)
 
 elif st.session_state.menu == "Pensiun":
+    if st.button("← Kembali ke Dashboard"):
+    st.session_state.menu = "Dashboard"
+    st.rerun()
 
     st.markdown("""
     <div class="hero">
