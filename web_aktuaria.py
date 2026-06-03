@@ -507,7 +507,7 @@ if st.session_state.menu == "Dashboard":
     
     with col2:
         st.markdown("""
-        <div class="card card-blue">
+        <div class="card card-purple">
             <h3>NILAI MASA DEPAN</h3>
             <p>Proyeksi nilai investasi pada masa mendatang.</p>
         </div>
@@ -519,7 +519,7 @@ if st.session_state.menu == "Dashboard":
     
     with col3:
         st.markdown("""
-        <div class="card">
+        <div class="card card-purple">
             <h3>TARGET KEUANGAN</h3>
             <p>Menentukan kebutuhan tabungan untuk mencapai tujuan finansial.</p>
         </div>
@@ -535,7 +535,7 @@ if st.session_state.menu == "Dashboard":
     
     with col4:
         st.markdown("""
-        <div class="card">
+        <div class="card card-purple">
             <h3>DANA DARURAT</h3>
             <p>Menghitung kebutuhan dana cadangan keuangan.</p>
         </div>
@@ -547,7 +547,7 @@ if st.session_state.menu == "Dashboard":
     
     with col5:
         st.markdown("""
-        <div class="card">
+        <div class="card card-purple">
             <h3>DANA PENSIUN</h3>
             <p>Perencanaan dana pensiun jangka panjang.</p>
         </div>
@@ -870,18 +870,21 @@ elif st.session_state.menu == "Pensiun":
         st.session_state.menu = "Dashboard"
         st.rerun()
 
-    st.markdown("""
+    st.markdown(
+    """
     <div class="hero">
         <div class="hero-title">
-        Dana Pensiun
+            Dana Pensiun
         </div>
-
+    
         <div class="hero-sub">
-        Rencanakan kebutuhan dana
-        untuk masa pensiun.
+            Rencanakan kebutuhan dana
+            untuk masa pensiun.
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """,
+    unsafe_allow_html=True
+    )
 
     st.write("")
 
