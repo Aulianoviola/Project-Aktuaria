@@ -9,7 +9,10 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* FONT */
+/* =========================
+   FONT
+========================= */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 html, body, [class*="css"]{
@@ -21,7 +24,12 @@ html, body, [class*="css"]{
 ========================= */
 
 .stApp{
-    background:#EEF1F8;
+    background:
+    linear-gradient(
+        180deg,
+        #FAF8FD 0%,
+        #F6F1FB 100%
+    );
 }
 
 /* =========================
@@ -29,10 +37,11 @@ html, body, [class*="css"]{
 ========================= */
 
 section[data-testid="stSidebar"]{
-    background:linear-gradient(
+    background:
+    linear-gradient(
         180deg,
-        #7B61FF,
-        #6C63FF
+        #6F4BD8,
+        #8E6AF0
     );
 }
 
@@ -45,29 +54,46 @@ section[data-testid="stSidebar"] *{
 ========================= */
 
 .hero{
-    background:white;
 
-    border-radius:32px;
+    background:
+    linear-gradient(
+        135deg,
+        #FFFFFF,
+        #F5EEFF
+    );
 
-    padding:60px;
+    border-radius:35px;
+
+    padding:70px;
+
+    border:1px solid #EEE6FA;
 
     box-shadow:
-    0 15px 40px rgba(0,0,0,.08);
+    0 15px 40px rgba(111,75,216,.08);
 
-    border:none;
+    margin-bottom:15px;
 }
 
 .hero-title{
-    color:#111827;
-    font-size:60px;
+
+    font-size:72px;
+
     font-weight:800;
-    margin-bottom:10px;
+
+    color:#2D1F4A;
+
+    line-height:1.1;
 }
 
 .hero-sub{
-    color:#6B7280;
-    font-size:20px;
-    line-height:1.7;
+
+    font-size:22px;
+
+    color:#786F87;
+
+    line-height:1.8;
+
+    max-width:750px;
 }
 
 /* =========================
@@ -75,65 +101,146 @@ section[data-testid="stSidebar"] *{
 ========================= */
 
 .card{
+
     background:white;
 
     border-radius:28px;
 
     padding:30px;
 
-    min-height:220px;
+    min-height:240px;
+
+    border:1px solid #EEE6FA;
 
     box-shadow:
-    0 10px 25px rgba(0,0,0,.06);
+    0 10px 25px rgba(0,0,0,.04);
 
-    transition:0.3s;
+    transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
 }
 
 .card:hover{
-    transform:translateY(-5px);
+
+    transform:translateY(-6px);
 
     box-shadow:
-    0 20px 35px rgba(0,0,0,.08);
-}
-
-.card h3{
-    font-size:24px;
-    font-weight:700;
-    color:#111827;
-}
-
-.card p{
-    color:#6B7280;
-    line-height:1.7;
+    0 20px 40px rgba(111,75,216,.10);
 }
 
 /* =========================
-   STAT CARD
+   CARD TOP BAR
 ========================= */
 
-.stat-card{
-    background:white;
-
-    border-radius:24px;
-
-    padding:25px;
-
-    text-align:center;
-
-    box-shadow:
-    0 8px 20px rgba(0,0,0,.05);
+.card-purple{
+    border-top:8px solid #7C5CE6;
 }
 
-.stat-number{
-    color:#6C63FF;
-
-    font-size:32px;
-
-    font-weight:800;
+.card-pink{
+    border-top:8px solid #FF7BB5;
 }
 
-.stat-title{
-    color:#6B7280;
+.card-green{
+    border-top:8px solid #10B981;
+}
+
+.card-gold{
+    border-top:8px solid #D4A24C;
+}
+
+.card-blue{
+    border-top:8px solid #3B82F6;
+}
+
+/* =========================
+   ICON BOX
+========================= */
+
+.icon{
+
+    width:65px;
+    height:65px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:30px;
+
+    margin-bottom:20px;
+}
+
+.icon-purple{
+    background:#EFE9FF;
+}
+
+.icon-pink{
+    background:#FFE8F3;
+}
+
+.icon-green{
+    background:#DDFBF0;
+}
+
+.icon-gold{
+    background:#FFF2D8;
+}
+
+.icon-blue{
+    background:#E3EEFF;
+}
+
+/* =========================
+   CARD TEXT
+========================= */
+
+.card h3{
+
+    color:#2D1F4A;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+}
+
+.card p{
+
+    color:#7B728B;
+
+    font-size:15px;
+
+    line-height:1.8;
+}
+
+/* =========================
+   BADGE
+========================= */
+
+.badge{
+
+    display:inline-block;
+
+    background:#F4EEFF;
+
+    color:#6F4BD8;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    margin-bottom:18px;
 }
 
 /* =========================
@@ -141,32 +248,46 @@ section[data-testid="stSidebar"] *{
 ========================= */
 
 .result{
-    background:linear-gradient(
+
+    background:
+    linear-gradient(
         135deg,
-        #6C63FF,
-        #8B7CFF
+        #7C5CE6,
+        #A78BFA
     );
+
+    border-radius:35px;
+
+    padding:45px;
 
     color:white;
 
-    border-radius:30px;
-
-    padding:40px;
-
     box-shadow:
-    0 15px 35px rgba(108,99,255,.25);
+    0 20px 40px rgba(124,92,230,.18);
 }
 
 .result-title{
-    color:#E9E5FF;
+
+    color:#EDE7FF;
+
+    letter-spacing:2px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-bottom:10px;
 }
 
 .result-value{
-    color:white;
 
     font-size:58px;
 
     font-weight:800;
+
+    line-height:1.2;
+
+    color:white;
 }
 
 /* =========================
@@ -175,7 +296,14 @@ section[data-testid="stSidebar"] *{
 
 .stButton > button{
 
-    background:#6C63FF !important;
+    width:100%;
+
+    background:
+    linear-gradient(
+        135deg,
+        #6F4BD8,
+        #8E6AF0
+    ) !important;
 
     color:white !important;
 
@@ -183,47 +311,87 @@ section[data-testid="stSidebar"] *{
 
     border-radius:14px !important;
 
-    height:55px;
+    height:55px !important;
 
-    font-weight:600;
+    font-size:15px !important;
+
+    font-weight:600 !important;
 
     box-shadow:
-    0 8px 20px rgba(108,99,255,.25);
+    0 8px 20px rgba(111,75,216,.20);
 
     transition:.3s;
 }
 
 .stButton > button:hover{
 
-    background:#5A52E8 !important;
-
     transform:translateY(-2px);
+
+    background:
+    linear-gradient(
+        135deg,
+        #5E3CC4,
+        #7D58EA
+    ) !important;
 }
 
 /* =========================
    INPUT
 ========================= */
 
-.stTextInput input,
-.stNumberInput input{
-
-    border-radius:14px !important;
-
-    border:none !important;
+.stNumberInput input,
+.stTextInput input{
 
     background:white !important;
 
-    box-shadow:
-    0 4px 12px rgba(0,0,0,.05);
+    border:1px solid #E7DFF5 !important;
+
+    border-radius:15px !important;
+
+    height:52px !important;
+
+    color:#2D1F4A !important;
 }
 
 /* =========================
-   REMOVE GLOW
+   SELECTBOX
 ========================= */
 
-.hero::before,
-.hero::after{
-    display:none;
+div[data-baseweb="select"] > div{
+
+    border-radius:15px !important;
+
+    border:1px solid #E7DFF5 !important;
+
+    min-height:52px !important;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+
+    text-align:center;
+
+    color:#8D839F;
+
+    padding:30px;
+
+    font-size:14px;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#B79DF5;
+    border-radius:999px;
 }
 
 </style>
@@ -260,7 +428,7 @@ if st.session_state.menu == "Dashboard":
 
     with col1:
         st.markdown("""
-        <div class="card">
+        <div class="card card-purple">
             <h3>BUNGA MAJEMUK</h3>
             <p>Menghitung pertumbuhan investasi berdasarkan bunga majemuk.</p>
         </div>
