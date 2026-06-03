@@ -1,242 +1,362 @@
 import streamlit as st
 import math
 
-# =========================
-# KONFIGURASI HALAMAN
-# =========================
+# =====================================
+# PAGE CONFIG
+# =====================================
 st.set_page_config(
-    page_title="Kalkulator Matematika Aktuaria",
-    page_icon="🔢",
-    layout="centered"
+    page_title="Kalkulator Aktuaria",
+    page_icon="📈",
+    layout="wide"
 )
 
 # =====================================
-# SIDEBAR
+# CUSTOM CSS
 # =====================================
-st.sidebar.markdown("## Menu")
 
-if st.sidebar.button("🏠 Halaman Depan"):
-    st.session_state.menu = "home"
+st.markdown("""
+<style>
 
-if st.sidebar.button("📈 Bunga Majemuk"):
-    st.session_state.menu = "Bunga Majemuk"
+/* Background */
+.stApp{
+    background: linear-gradient(
+        135deg,
+        #050816 0%,
+        #0b1026 30%,
+        #150f3f 70%,
+        #090b18 100%
+    );
+    color:white;
+}
 
-if st.sidebar.button("💰 Present Value"):
-    st.session_state.menu = "Present Value"
+/* Hide Streamlit */
+#MainMenu {visibility:hidden;}
+footer {visibility:hidden;}
+header {visibility:hidden;}
 
-if st.sidebar.button("📊 Future Value"):
-    st.session_state.menu = "Future Value"
+/* Title */
+.main-title{
+    text-align:center;
+    font-size:60px;
+    font-weight:800;
+    color:white;
 
-if st.sidebar.button("🧾 Anuitas"):
-    st.session_state.menu = "Anuitas"
+    text-shadow:
+        0 0 10px #00d4ff,
+        0 0 20px #00d4ff,
+        0 0 40px #7f5cff;
+}
+
+/* Subtitle */
+.sub-title{
+    text-align:center;
+    color:#cfcfcf;
+    font-size:18px;
+}
+
+/* Hero */
+.hero{
+    padding:40px;
+    border-radius:25px;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    box-shadow:
+        0 0 30px rgba(0,212,255,.2);
+}
+
+/* Cards */
+.card{
+    padding:25px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:0.4s;
+
+    margin-bottom:20px;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:
+        0 0 20px #00d4ff,
+        0 0 40px #7f5cff;
+}
+
+/* Buttons */
+.stButton>button{
+
+    width:100%;
+    border:none;
+
+    border-radius:15px;
+
+    padding:12px;
+
+    color:white;
+
+    font-weight:bold;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7f5cff,
+            #00d4ff
+        );
+
+    box-shadow:
+        0 0 15px #7f5cff,
+        0 0 25px #00d4ff;
+
+    transition:.4s;
+}
+
+.stButton>button:hover{
+    transform:translateY(-5px);
+}
+
+/* Inputs */
+
+[data-baseweb="input"]{
+    background:rgba(255,255,255,.05);
+    border-radius:15px;
+}
+
+/* Success Box */
+.stAlert{
+    border-radius:15px;
+}
+
+/* Floating Animation */
+
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+.float{
+    animation:float 3s ease-in-out infinite;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
 # =====================================
-# DEFAULT MENU
+# MENU
 # =====================================
+
 if "menu" not in st.session_state:
     st.session_state.menu = "home"
-# =========================================
+
+with st.sidebar:
+
+    st.markdown("## 🚀 Navigation")
+
+    if st.button("🏠 Home"):
+        st.session_state.menu = "home"
+
+    if st.button("📈 Bunga Majemuk"):
+        st.session_state.menu = "bm"
+
+    if st.button("💰 Present Value"):
+        st.session_state.menu = "pv"
+
+    if st.button("📊 Future Value"):
+        st.session_state.menu = "fv"
+
+    if st.button("🧾 Anuitas"):
+        st.session_state.menu = "anuitas"
+
+# =====================================
 # HOME
-# =========================================
+# =====================================
+
 if st.session_state.menu == "home":
 
-    st.title("Kalkulator Matematika Aktuaria")
+    st.markdown("""
+    <div class="hero float">
 
-    st.write("""
-    Website Sederhana untuk Membantu Perhitungan Matematika Aktuaria.
-    """)
+    <h1 class="main-title">
+    📈 Kalkulator Aktuaria
+    </h1>
 
-    st.write("## 📌 Pilihan Perhitungan")
+    <p class="sub-title">
+    Future Value • Present Value • Anuitas • Bunga Majemuk
+    </p>
 
-    # BARIS PERTAMA
-    col1, col2 = st.columns(2)
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.write("")
+    st.write("")
+
+    col1,col2 = st.columns(2)
 
     with col1:
-        if st.button("📈 Bunga Majemuk"):
-            st.session_state.menu = "Bunga Majemuk"
+
+        st.markdown("""
+        <div class="card">
+        <h3>📈 Bunga Majemuk</h3>
+        Hitung pertumbuhan investasi dengan bunga majemuk.
+        </div>
+        """, unsafe_allow_html=True)
+
+        if st.button("Masuk Bunga Majemuk"):
+            st.session_state.menu="bm"
             st.rerun()
 
     with col2:
-        if st.button("💰 Present Value"):
-            st.session_state.menu = "Present Value"
+
+        st.markdown("""
+        <div class="card">
+        <h3>💰 Present Value</h3>
+        Menghitung nilai sekarang dari nilai masa depan.
+        </div>
+        """, unsafe_allow_html=True)
+
+        if st.button("Masuk Present Value"):
+            st.session_state.menu="pv"
             st.rerun()
 
-    # BARIS KEDUA
-    col3, col4 = st.columns(2)
+    col3,col4 = st.columns(2)
 
     with col3:
-        if st.button("📊 Future Value"):
-            st.session_state.menu = "Future Value"
+
+        st.markdown("""
+        <div class="card">
+        <h3>📊 Future Value</h3>
+        Hitung nilai investasi masa depan.
+        </div>
+        """, unsafe_allow_html=True)
+
+        if st.button("Masuk Future Value"):
+            st.session_state.menu="fv"
             st.rerun()
 
     with col4:
-        if st.button("🧾 Anuitas"):
-            st.session_state.menu = "Anuitas"
+
+        st.markdown("""
+        <div class="card">
+        <h3>🧾 Anuitas</h3>
+        Perhitungan nilai anuitas.
+        </div>
+        """, unsafe_allow_html=True)
+
+        if st.button("Masuk Anuitas"):
+            st.session_state.menu="anuitas"
             st.rerun()
 
-# =====================================================
+# =====================================
 # BUNGA MAJEMUK
-# =====================================================
-elif st.session_state.menu == "Bunga Majemuk":
+# =====================================
 
-    st.header("Perhitungan Bunga Majemuk")
+elif st.session_state.menu == "bm":
 
-    modal = st.number_input(
-        "Modal Awal",
-        min_value=0.0,
-        value=1000.0
-    )
+    st.markdown("# 📈 Bunga Majemuk")
 
-    bunga = st.number_input(
-        "Bunga (%)",
-        min_value=0.0,
-        value=5.0
-    )
+    P = st.number_input("Modal Awal",0.0, value=1000.0)
+    r = st.number_input("Bunga (%)",0.0,value=5.0)
+    t = st.number_input("Tahun",0.0,value=1.0)
 
-    waktu = st.number_input(
-        "Waktu (tahun)",
-        min_value=0.0,
-        value=1.0
-    )
+    if st.button("🚀 Hitung"):
 
-    if st.button("Hitung Bunga Majemuk"):
+        hasil = P*(1+r/100)**t
 
-        hasil = modal * (1 + bunga / 100) ** waktu
-
-        st.success(f"Hasil Akhir = {hasil:,.2f}")
-
-        st.info(
-            f"""
-            Rumus:
-            
-            A = P(1+r)^t
-            
-            Dengan:
-            - P = {modal}
-            - r = {bunga/100}
-            - t = {waktu}
-            """
+        st.success(
+            f"Hasil Akhir = Rp {hasil:,.2f}"
         )
 
-# =====================================================
+# =====================================
 # PRESENT VALUE
-# =====================================================
-elif st.session_state.menu == "Present Value":
+# =====================================
 
-    st.header("Perhitungan Present Value")
+elif st.session_state.menu == "pv":
 
-    fv = st.number_input(
-        "Future Value",
-        min_value=0.0,
-        value=10000.0
-    )
+    st.markdown("# 💰 Present Value")
 
-    bunga = st.number_input(
-        "Bunga (%)",
-        min_value=0.0,
-        value=5.0,
-        key="pv_bunga"
-    )
+    fv = st.number_input("Future Value",0.0,100000000.0,10000.0)
+    r = st.number_input("Bunga (%)",0.0,100.0,5.0)
+    t = st.number_input("Tahun",0.0,100.0,1.0)
 
-    waktu = st.number_input(
-        "Waktu (tahun)",
-        min_value=0.0,
-        value=1.0,
-        key="pv_waktu"
-    )
+    if st.button("🚀 Hitung PV"):
 
-    if st.button("Hitung Present Value"):
+        pv = fv/((1+r/100)**t)
 
-        pv = fv / ((1 + bunga / 100) ** waktu)
-
-        st.success(f"Present Value = {pv:,.2f}")
-
-        st.info(
-            f"""
-            Rumus:
-            
-            PV = FV / (1+r)^t
-            """
+        st.success(
+            f"PV = Rp {pv:,.2f}"
         )
 
-# =====================================================
+# =====================================
 # FUTURE VALUE
-# =====================================================
-elif st.session_state.menu == "Future Value":
+# =====================================
 
-    st.header("Perhitungan Future Value")
+elif st.session_state.menu == "fv":
 
-    pv = st.number_input(
-        "Present Value",
-        min_value=0.0,
-        value=1000.0
-    )
+    st.markdown("# 📊 Future Value")
 
-    bunga = st.number_input(
-        "Bunga (%)",
-        min_value=0.0,
-        value=5.0,
-        key="fv_bunga"
-    )
+    pv = st.number_input("Present Value",0.0,100000000.0,1000.0)
+    r = st.number_input("Bunga (%)",0.0,100.0,5.0)
+    t = st.number_input("Tahun",0.0,100.0,1.0)
 
-    waktu = st.number_input(
-        "Waktu (tahun)",
-        min_value=0.0,
-        value=1.0,
-        key="fv_waktu"
-    )
+    if st.button("🚀 Hitung FV"):
 
-    if st.button("Hitung Future Value"):
+        fv = pv*((1+r/100)**t)
 
-        fv = pv * ((1 + bunga / 100) ** waktu)
-
-        st.success(f"Future Value = {fv:,.2f}")
-
-        st.info(
-            f"""
-            Rumus:
-            
-            FV = PV(1+r)^t
-            """
+        st.success(
+            f"FV = Rp {fv:,.2f}"
         )
 
-# =====================================================
+# =====================================
 # ANUITAS
-# =====================================================
-elif st.session_state.menu == "Anuitas":
+# =====================================
 
-    st.header("Perhitungan Anuitas")
+elif st.session_state.menu == "anuitas":
+
+    st.markdown("# 🧾 Anuitas")
 
     pembayaran = st.number_input(
         "Pembayaran per Periode",
-        min_value=0.0,
         value=1000.0
     )
 
     bunga = st.number_input(
         "Bunga (%)",
-        min_value=0.1,
-        value=5.0,
-        key="anuitas_bunga"
+        value=5.0
     )
 
     periode = st.number_input(
         "Jumlah Periode",
-        min_value=1,
         value=5
     )
 
-    if st.button("Hitung Anuitas"):
+    if st.button("🚀 Hitung Anuitas"):
 
-        r = bunga / 100
+        r = bunga/100
 
-        anuitas = pembayaran * ((1 - (1 + r) ** (-periode)) / r)
+        hasil = pembayaran * (
+            (1-(1+r)**(-periode))/r
+        )
 
-        st.success(f"Nilai Anuitas = {anuitas:,.2f}")
-
-        st.info(
-            f"""
-            Rumus:
-            
-            A = P[(1-(1+r)^-n)/r]
-            """
+        st.success(
+            f"Nilai Anuitas = Rp {hasil:,.2f}"
         )
