@@ -598,14 +598,14 @@ elif st.session_state.menu == "Darurat":
     st.write("")
 
     left, center, right = st.columns([1,2,1])
-    
+
     with center:
-    
+
         pengeluaran = st.number_input(
             "Pengeluaran Bulanan",
             min_value=0.0
         )
-    
+
         status = st.selectbox(
             "Status",
             [
@@ -614,7 +614,7 @@ elif st.session_state.menu == "Darurat":
                 "Menikah + Anak"
             ]
         )
-    
+
         hitung_darurat = st.button(
             "Hitung Dana Darurat",
             use_container_width=True
@@ -622,30 +622,32 @@ elif st.session_state.menu == "Darurat":
 
     if hitung_darurat:
 
-    if status == "Belum Menikah":
-        faktor = 6
-    elif status == "Menikah":
-        faktor = 9
-    else:
-        faktor = 12
+        if status == "Belum Menikah":
+            faktor = 6
 
-    dana = pengeluaran * faktor
+        elif status == "Menikah":
+            faktor = 9
 
-    with st.columns([1,2,1])[1]:
+        else:
+            faktor = 12
 
-        st.markdown(f"""
-        <div class="result">
+        dana = pengeluaran * faktor
 
-        <div class="result-title">
-        DANA DARURAT IDEAL
-        </div>
+        with st.columns([1,2,1])[1]:
 
-        <div class="result-value">
-        Rp {dana:,.0f}
-        </div>
+            st.markdown(f"""
+            <div class="result">
 
-        </div>
-        """, unsafe_allow_html=True)
+            <div class="result-title">
+            DANA DARURAT IDEAL
+            </div>
+
+            <div class="result-value">
+            Rp {dana:,.0f}
+            </div>
+
+            </div>
+            """, unsafe_allow_html=True)
     
 elif st.session_state.menu == "Pensiun":
     if st.button("← Kembali ke Dashboard"):
