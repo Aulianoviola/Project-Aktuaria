@@ -24,12 +24,28 @@ html, body, [class*="css"]{
 ========================= */
 
 .stApp{
-    background:
-    linear-gradient(
-        180deg,
-        #FAF8FD 0%,
-        #F6F1FB 100%
-    );
+
+background:
+radial-gradient(
+circle at top right,
+rgba(139,92,246,.25),
+transparent 30%
+),
+
+radial-gradient(
+circle at bottom left,
+rgba(37,99,235,.20),
+transparent 30%
+),
+
+linear-gradient(
+135deg,
+#020014 0%,
+#050021 40%,
+#090B3F 100%
+);
+
+color:white;
 }
 
 /* =========================
@@ -37,16 +53,20 @@ html, body, [class*="css"]{
 ========================= */
 
 section[data-testid="stSidebar"]{
-    background:
-    linear-gradient(
-        180deg,
-        #6F4BD8,
-        #8E6AF0
-    );
+
+background:
+linear-gradient(
+180deg,
+#080022,
+#12003D
+);
+
+border-right:
+1px solid rgba(255,255,255,.08);
 }
 
 section[data-testid="stSidebar"] *{
-    color:white;
+color:white;
 }
 
 /* =========================
@@ -55,35 +75,72 @@ section[data-testid="stSidebar"] *{
 
 .hero{
 
-background-image:
-url("https://share.google/VaT3e9S1k2R2ae27p");
+background:
+linear-gradient(
+145deg,
+rgba(15,15,50,.95),
+rgba(5,5,30,.95)
+);
 
-background-repeat:no-repeat;
+padding:70px;
 
-background-position:right center;
+border-radius:35px;
 
-background-size:320px;
+border:
+1px solid rgba(255,255,255,.08);
+
+box-shadow:
+0 0 40px rgba(139,92,246,.15);
+
+position:relative;
+
+overflow:hidden;
 }
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+
+width:400px;
+height:400px;
+
+right:-120px;
+top:-120px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(139,92,246,.25),
+transparent 70%
+);
+
+filter:blur(40px);
+}
+
 .hero-title{
 
-    font-size:72px;
+font-size:72px;
 
-    font-weight:800;
+font-weight:800;
 
-    color:#2D1F4A;
+line-height:1.1;
 
-    line-height:1.1;
+color:white;
 }
 
 .hero-sub{
 
-    font-size:22px;
+font-size:22px;
 
-    color:#786F87;
+line-height:1.8;
 
-    line-height:1.8;
+color:#BFC4E0;
 
-    max-width:750px;
+max-width:700px;
 }
 
 /* =========================
@@ -92,98 +149,102 @@ background-size:320px;
 
 .card{
 
-    background:white;
+background:
+linear-gradient(
+145deg,
+rgba(17,17,60,.95),
+rgba(8,8,35,.95)
+);
 
-    border-radius:28px;
+padding:30px;
 
-    padding:30px;
+border-radius:30px;
 
-    min-height:240px;
+min-height:240px;
 
-    border:1px solid #EEE6FA;
+border:
+1px solid rgba(255,255,255,.08);
 
-    box-shadow:
-    0 10px 25px rgba(0,0,0,.04);
+box-shadow:
+0 0 20px rgba(0,0,0,.25);
 
-    transition:.3s;
-
-    position:relative;
-
-    overflow:hidden;
+transition:.4s;
 }
 
 .card:hover{
 
-    transform:translateY(-6px);
+transform:
+translateY(-8px);
 
-    box-shadow:
-    0 20px 40px rgba(111,75,216,.10);
+border:
+1px solid rgba(139,92,246,.6);
+
+box-shadow:
+0 0 35px rgba(139,92,246,.30);
 }
 
 /* =========================
-   CARD TOP BAR
+   CARD VARIANTS
 ========================= */
 
 .card-purple{
-    border-top:8px solid #7C5CE6;
+border-top:5px solid #8B5CF6;
 }
 
 .card-pink{
-    border-top:8px solid #FF7BB5;
-}
-
-.card-green{
-    border-top:8px solid #10B981;
-}
-
-.card-gold{
-    border-top:8px solid #D4A24C;
+border-top:5px solid #EC4899;
 }
 
 .card-blue{
-    border-top:8px solid #3B82F6;
+border-top:5px solid #3B82F6;
+}
+
+.card-green{
+border-top:5px solid #10B981;
+}
+
+.card-orange{
+border-top:5px solid #F59E0B;
 }
 
 /* =========================
-   ICON BOX
+   ICON
 ========================= */
 
 .icon{
 
-    width:65px;
-    height:65px;
+width:65px;
+height:65px;
 
-    border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
 
-    display:flex;
+font-size:30px;
 
-    align-items:center;
+border-radius:18px;
 
-    justify-content:center;
-
-    font-size:30px;
-
-    margin-bottom:20px;
+margin-bottom:20px;
 }
 
 .icon-purple{
-    background:#EFE9FF;
+background:rgba(139,92,246,.15);
 }
 
 .icon-pink{
-    background:#FFE8F3;
-}
-
-.icon-green{
-    background:#DDFBF0;
-}
-
-.icon-gold{
-    background:#FFF2D8;
+background:rgba(236,72,153,.15);
 }
 
 .icon-blue{
-    background:#E3EEFF;
+background:rgba(59,130,246,.15);
+}
+
+.icon-green{
+background:rgba(16,185,129,.15);
+}
+
+.icon-orange{
+background:rgba(245,158,11,.15);
 }
 
 /* =========================
@@ -192,22 +253,20 @@ background-size:320px;
 
 .card h3{
 
-    color:#2D1F4A;
+font-size:24px;
 
-    font-size:24px;
+font-weight:700;
 
-    font-weight:700;
+color:white;
 
-    margin-bottom:15px;
+margin-bottom:15px;
 }
 
 .card p{
 
-    color:#7B728B;
+color:#BFC4E0;
 
-    font-size:15px;
-
-    line-height:1.8;
+line-height:1.8;
 }
 
 /* =========================
@@ -216,68 +275,63 @@ background-size:320px;
 
 .badge{
 
-    display:inline-block;
+display:inline-block;
 
-    background:#F4EEFF;
+padding:8px 15px;
 
-    color:#6F4BD8;
+border-radius:999px;
 
-    padding:8px 14px;
+font-size:12px;
 
-    border-radius:999px;
+font-weight:600;
 
-    font-size:12px;
+margin-bottom:15px;
 
-    font-weight:600;
+background:
+rgba(139,92,246,.15);
 
-    margin-bottom:18px;
+color:#C4B5FD;
 }
 
 /* =========================
-   RESULT CARD
+   RESULT
 ========================= */
 
 .result{
 
-    background:
-    linear-gradient(
-        135deg,
-        #7C5CE6,
-        #A78BFA
-    );
+background:
+linear-gradient(
+135deg,
+#7C3AED,
+#2563EB
+);
 
-    border-radius:35px;
+border-radius:35px;
 
-    padding:45px;
+padding:45px;
 
-    color:white;
-
-    box-shadow:
-    0 20px 40px rgba(124,92,230,.18);
+box-shadow:
+0 0 40px rgba(124,58,237,.35);
 }
 
 .result-title{
 
-    color:#EDE7FF;
+font-size:14px;
 
-    letter-spacing:2px;
+letter-spacing:2px;
 
-    font-size:14px;
-
-    font-weight:600;
-
-    margin-bottom:10px;
+color:#DDD6FE;
 }
 
 .result-value{
 
-    font-size:58px;
+font-size:60px;
 
-    font-weight:800;
+font-weight:800;
 
-    line-height:1.2;
+color:white;
 
-    color:white;
+line-height:1.1;
 }
 
 /* =========================
@@ -286,61 +340,58 @@ background-size:320px;
 
 .stButton > button{
 
-    width:100%;
+width:100%;
 
-    background:
-    linear-gradient(
-        135deg,
-        #6F4BD8,
-        #8E6AF0
-    ) !important;
+height:55px;
 
-    color:white !important;
+border:none !important;
 
-    border:none !important;
+border-radius:14px !important;
 
-    border-radius:14px !important;
+font-weight:700;
 
-    height:55px !important;
+color:white !important;
 
-    font-size:15px !important;
+background:
+linear-gradient(
+135deg,
+#8B5CF6,
+#2563EB
+) !important;
 
-    font-weight:600 !important;
+box-shadow:
+0 0 25px rgba(139,92,246,.30);
 
-    box-shadow:
-    0 8px 20px rgba(111,75,216,.20);
-
-    transition:.3s;
+transition:.3s;
 }
 
 .stButton > button:hover{
 
-    transform:translateY(-2px);
+transform:
+translateY(-3px);
 
-    background:
-    linear-gradient(
-        135deg,
-        #5E3CC4,
-        #7D58EA
-    ) !important;
+box-shadow:
+0 0 35px rgba(37,99,235,.40);
 }
 
 /* =========================
    INPUT
 ========================= */
 
-.stNumberInput input,
-.stTextInput input{
+.stTextInput input,
+.stNumberInput input{
 
-    background:white !important;
+background:
+rgba(255,255,255,.05) !important;
 
-    border:1px solid #E7DFF5 !important;
+color:white !important;
 
-    border-radius:15px !important;
+border:
+1px solid rgba(255,255,255,.10) !important;
 
-    height:52px !important;
+border-radius:15px !important;
 
-    color:#2D1F4A !important;
+height:52px !important;
 }
 
 /* =========================
@@ -349,11 +400,32 @@ background-size:320px;
 
 div[data-baseweb="select"] > div{
 
-    border-radius:15px !important;
+background:
+rgba(255,255,255,.05) !important;
 
-    border:1px solid #E7DFF5 !important;
+border:
+1px solid rgba(255,255,255,.10) !important;
 
-    min-height:52px !important;
+border-radius:15px !important;
+
+color:white !important;
+}
+
+/* =========================
+   LABEL
+========================= */
+
+label{
+color:white !important;
+}
+
+/* =========================
+   HR
+========================= */
+
+hr{
+border:
+1px solid rgba(255,255,255,.10);
 }
 
 /* =========================
@@ -362,13 +434,11 @@ div[data-baseweb="select"] > div{
 
 .footer{
 
-    text-align:center;
+text-align:center;
 
-    color:#8D839F;
+padding:30px;
 
-    padding:30px;
-
-    font-size:14px;
+color:#A5AED0;
 }
 
 /* =========================
@@ -376,12 +446,19 @@ div[data-baseweb="select"] > div{
 ========================= */
 
 ::-webkit-scrollbar{
-    width:8px;
+width:8px;
 }
 
 ::-webkit-scrollbar-thumb{
-    background:#B79DF5;
-    border-radius:999px;
+
+background:
+linear-gradient(
+180deg,
+#8B5CF6,
+#2563EB
+);
+
+border-radius:999px;
 }
 
 </style>
