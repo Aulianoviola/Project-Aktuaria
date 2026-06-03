@@ -25,17 +25,13 @@ html, body, [class*="css"]{
 
 .stApp{
 
-    background:
-    linear-gradient(
-        135deg,
-        #030314 0%,
-        #0B0B3B 25%,
-        #17115A 50%,
-        #24176F 75%,
-        #35208F 100%
-    );
-
-    color:white;
+background:
+linear-gradient(
+135deg,
+#F8FAFC 0%,
+#EEF2FF 50%,
+#F5F3FF 100%
+);
 }
 
 /* =========================
@@ -109,49 +105,29 @@ footer{
 
 .hero{
 
-    text-align:center;
-
-    padding:80px 40px;
-
+    background:white;
+    
+    padding:60px 40px;
+    
     border-radius:30px;
-
-    background:
-    rgba(255,255,255,0.05);
-
-    backdrop-filter:
-    blur(20px);
-
-    border:
-    1px solid rgba(255,255,255,.08);
-
+    
     box-shadow:
-    0 0 40px rgba(99,102,241,.15);
+    0 10px 25px rgba(0,0,0,.08);
 }
-
 .hero-title{
 
-    font-size:72px;
-
+    font-size:56px;
+    
     font-weight:800;
-
-    color:white;
-
-    letter-spacing:2px;
-
-    margin-bottom:20px;
+    
+    color:#111827;
 }
 
 .hero-sub{
 
-    color:#CBD5E1;
-
-    font-size:22px;
-
-    max-width:900px;
-
-    margin:auto;
-
-    line-height:1.8;
+    color:#6B7280;
+    
+    font-size:20px;
 }
 
 /* =========================
@@ -160,27 +136,20 @@ footer{
 
 .card{
 
-    background:
-    rgba(255,255,255,0.06);
-
-    backdrop-filter:
-    blur(20px);
+    background:white;
 
     border-radius:28px;
 
-    padding:30px;
+    padding:35px;
 
-    height:240px;
+    height:260px;
 
-    border:
-    1px solid rgba(255,255,255,.08);
-
-    transition:all .4s ease;
-
-    cursor:pointer;
+    transition:.35s;
 
     box-shadow:
-    0 0 25px rgba(0,0,0,.25);
+    0 8px 25px rgba(0,0,0,.08);
+
+    border:none;
 }
 
 .card:hover{
@@ -188,34 +157,49 @@ footer{
     transform:
     translateY(-10px);
 
-    border:
-    1px solid #8B5CF6;
-
     box-shadow:
-    0 0 20px rgba(139,92,246,.6),
-    0 0 40px rgba(59,130,246,.4);
+    0 20px 40px rgba(0,0,0,.15);
 }
 
 .card-title{
 
-    color:white;
+    color:#111827;
 
-    font-size:28px;
+    font-size:22px;
 
-    font-weight:700;
+    font-weight:800;
 
-    margin-bottom:20px;
+    letter-spacing:1px;
 }
 
 .card-desc{
 
-    color:#CBD5E1;
+    color:#6B7280;
 
-    line-height:1.9;
+    line-height:1.8;
 
-    font-size:16px;
+    font-size:15px;
 }
 
+.card-link{
+
+    margin-top:25px;
+
+    color:#6366F1;
+
+    font-weight:700;
+
+    font-size:15px;
+
+    transition:.3s;
+}
+
+.card:hover .card-link{
+
+    transform:translateX(8px);
+
+    color:#4F46E5;
+}
 /* =========================
    RESULT CARD
 ========================= */
@@ -371,54 +355,72 @@ if st.session_state.menu == "Dashboard":
     with col1:
         st.markdown("""
         <div class="card">
-        <div class="card-title">
-        Bunga Majemuk
-        </div>
-        
-        <div class="card-desc">
-        Menghitung pertumbuhan investasi
-        berdasarkan bunga majemuk.
-        </div>
+    
+            <div class="card-title">
+            BUNGA MAJEMUK
+            </div>
+    
+            <div class="card-desc">
+            Menghitung pertumbuhan investasi
+            berdasarkan bunga majemuk.
+            </div>
+    
+            <div class="card-link">
+            Coba Sekarang →
+            </div>
+    
         </div>
         """, unsafe_allow_html=True)
-
-        if st.button("Buka", key="bunga"):
+    
+        if st.button("", key="bunga"):
             st.session_state.menu = "Bunga"
             st.rerun()
             
     with col2:
         st.markdown("""
         <div class="card">
-        <div class="card-title">
-        Nilai Masa Depan
-        </div>
     
-        <div class="card-desc">
-        Proyeksi nilai investasi
-        pada masa mendatang.
-        </div>
+            <div class="card-title">
+            NILAI MASA DEPAN
+            </div>
+    
+            <div class="card-desc">
+            Proyeksi nilai investasi
+            pada masa mendatang.
+            </div>
+    
+            <div class="card-link">
+            Coba Sekarang →
+            </div>
+    
         </div>
         """, unsafe_allow_html=True)
     
-        if st.button("Masuk", key="fv"):
+        if st.button("", key="fv"):
             st.session_state.menu = "FV"
             st.rerun()
             
-    with col3:
+   with col3:
         st.markdown("""
         <div class="card">
-        <div class="card-title">
-        Target Keuangan
-        </div>
-
-        <div class="card-desc">
-        Menentukan kebutuhan tabungan
-        untuk mencapai tujuan finansial.
-        </div>
+    
+            <div class="card-title">
+            TARGET KEUANGAN
+            </div>
+    
+            <div class="card-desc">
+            Menentukan kebutuhan tabungan
+            untuk mencapai tujuan finansial.
+            </div>
+    
+            <div class="card-link">
+            Coba Sekarang →
+            </div>
+    
         </div>
         """, unsafe_allow_html=True)
-
-        if st.button("Buka", key="target"):
+    
+        if st.button("", key="target"):
             st.session_state.menu = "Target"
             st.rerun()
 
@@ -427,53 +429,71 @@ if st.session_state.menu == "Dashboard":
     with col4:
         st.markdown("""
         <div class="card">
-        <div class="card-title">
-        🛡 Dana Darurat
-        </div>
     
-        <div class="card-desc">
-        Menghitung kebutuhan dana
-        cadangan berdasarkan kondisi
-        keuangan Anda.
-        </div>
+            <div class="card-title">
+            DANA DARURAT
+            </div>
+    
+            <div class="card-desc">
+            Menghitung kebutuhan dana
+            cadangan keuangan.
+            </div>
+    
+            <div class="card-link">
+            Coba Sekarang →
+            </div>
+    
         </div>
         """, unsafe_allow_html=True)
     
-        if st.button("Masuk", key="darurat"):
+        if st.button("", key="darurat"):
             st.session_state.menu = "Darurat"
             st.rerun()
     with col5:
         st.markdown("""
         <div class="card">
-        <div class="card-title">
-        Dana Pensiun
-        </div>
-
-        <div class="card-desc">
-        Merencanakan kebutuhan dana
-        untuk masa pensiun.
-        </div>
+    
+            <div class="card-title">
+            DANA PENSIUN
+            </div>
+    
+            <div class="card-desc">
+            Perencanaan dana pensiun
+            jangka panjang.
+            </div>
+    
+            <div class="card-link">
+            Coba Sekarang →
+            </div>
+    
         </div>
         """, unsafe_allow_html=True)
-
-        if st.button("Buka", key="pensiun"):
+    
+        if st.button("", key="pensiun"):
             st.session_state.menu = "Pensiun"
             st.rerun()
 
-        st.markdown("""
-        <div class="result">
-        
-        <div class="result-title">
-        FINANCIAL INSIGHT
-        </div>
-        
-        <div class="result-value">
-        Perencanaan yang baik dimulai dari
-        langkah kecil yang konsisten.
-        </div>
-        
-        </div>
-        """, unsafe_allow_html=True)
+# ==========================
+# FINANCIAL INSIGHT
+# ==========================
+
+st.write("")
+st.write("")
+
+st.markdown("""
+<div class="result">
+
+<div class="result-title">
+FINANCIAL INSIGHT
+</div>
+
+<div class="result-value">
+Konsistensi lebih penting daripada jumlah yang besar di awal.
+</div>
+
+</div>
+""", unsafe_allow_html=True)
+    
         
 elif st.session_state.menu == "Bunga":
     if st.button("← Kembali ke Dashboard"):
