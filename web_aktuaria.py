@@ -7,7 +7,6 @@ st.set_page_config(
 )
 
 st.markdown("""
-<style>
 
 /* =========================
    FONT
@@ -24,26 +23,45 @@ html, body, [class*="css"]{
 /* Background */
 .stApp{
     background:
+    radial-gradient(circle at top right,
+    rgba(139,92,246,.35),
+    transparent 35%),
+
+    radial-gradient(circle at bottom left,
+    rgba(99,102,241,.25),
+    transparent 35%),
+
     linear-gradient(
         135deg,
-        #f8faff 0%,
-        #eef2ff 40%,
-        #ede9fe 100%
+        #eef2ff 0%,
+        #e9d5ff 50%,
+        #ddd6fe 100%
     );
 }
 
 /* Hero */
 .hero{
-    background:white;
-    border-radius:35px;
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.95),
+        rgba(243,232,255,.9)
+    );
+
+    backdrop-filter:blur(30px);
+
+    border:1px solid rgba(255,255,255,.5);
+
+    border-radius:40px;
+
     padding:70px;
+
     box-shadow:
-    0 25px 50px rgba(99,102,241,.10);
+    0 30px 60px rgba(124,58,237,.20);
 
-    position:relative;
     overflow:hidden;
+    position:relative;
 }
-
 .hero::before{
     content:"";
     position:absolute;
@@ -77,37 +95,46 @@ html, body, [class*="css"]{
 /* CARD */
 .card{
     background:
-    rgba(255,255,255,.8);
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.95),
+        rgba(237,233,254,.85)
+    );
 
     backdrop-filter:blur(20px);
 
-    border-radius:30px;
+    border-radius:35px;
 
-    padding:30px;
+    padding:35px;
 
     min-height:240px;
 
-    border:
-    1px solid rgba(255,255,255,.8);
+    border:1px solid rgba(255,255,255,.7);
 
     box-shadow:
-    0 15px 40px rgba(99,102,241,.08);
+    0 20px 50px rgba(124,58,237,.12);
 
-    transition:.35s;
+    transition:.4s;
 }
 
 .card:hover{
-    transform:translateY(-8px);
+    transform:
+    translateY(-12px);
+
+    box-shadow:
+    0 30px 60px rgba(124,58,237,.25);
 }
 
 .card h3{
     color:#111827;
-    font-size:24px;
-    font-weight:700;
+    font-size:28px;
+    font-weight:800;
+    margin-bottom:18px;
 }
 
 .card p{
     color:#6B7280;
+    font-size:16px;
     line-height:1.8;
 }
 
@@ -168,24 +195,24 @@ html, body, [class*="css"]{
 /* Button */
 .stButton > button{
 
-    border:none;
-
-    border-radius:18px;
-
-    height:55px;
-
     background:
     linear-gradient(
         135deg,
-        #6366F1,
-        #8B5CF6
+        #6366f1,
+        #8b5cf6,
+        #a855f7
     );
 
-    color:white;
+    border:none;
 
-    font-weight:600;
+    border-radius:999px;
 
-    transition:.3s;
+    height:58px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 15px 30px rgba(139,92,246,.30);
 }
 
 .stButton > button:hover{
@@ -194,6 +221,29 @@ html, body, [class*="css"]{
 
     box-shadow:
     0 10px 30px rgba(139,92,246,.40);
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    right:-180px;
+    top:-180px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(139,92,246,.35),
+        transparent 70%
+    );
+
+    filter:blur(40px);
 }
 
 </style>
@@ -232,11 +282,7 @@ if st.session_state.menu == "Dashboard":
         st.markdown("""
         <div class="card">
             <h3>BUNGA MAJEMUK</h3>
-        
-            <p>
-            Menghitung pertumbuhan investasi
-            berdasarkan bunga majemuk.
-            </p>
+            <p>Menghitung pertumbuhan investasi berdasarkan bunga majemuk.</p>
         </div>
         """, unsafe_allow_html=True)
     
@@ -248,11 +294,7 @@ if st.session_state.menu == "Dashboard":
         st.markdown("""
         <div class="card">
             <h3>NILAI MASA DEPAN</h3>
-        
-            <p>
-            Proyeksi nilai investasi
-            pada masa mendatang.
-            </p>
+            <p>Proyeksi nilai investasi pada masa mendatang.</p>
         </div>
         """, unsafe_allow_html=True)
     
@@ -264,11 +306,7 @@ if st.session_state.menu == "Dashboard":
         st.markdown("""
         <div class="card">
             <h3>TARGET KEUANGAN</h3>
-        
-            <p>
-            Menentukan kebutuhan tabungan
-            untuk mencapai tujuan finansial.
-            </p>
+            <p>Menentukan kebutuhan tabungan untuk mencapai tujuan finansial.</p>
         </div>
         """, unsafe_allow_html=True)
     
@@ -284,11 +322,7 @@ if st.session_state.menu == "Dashboard":
         st.markdown("""
         <div class="card">
             <h3>DANA DARURAT</h3>
-        
-            <p>
-            Menghitung kebutuhan dana
-            cadangan keuangan.
-            </p>
+            <p>Menghitung kebutuhan dana cadangan keuangan.</p>
         </div>
         """, unsafe_allow_html=True)
     
@@ -300,18 +334,14 @@ if st.session_state.menu == "Dashboard":
         st.markdown("""
         <div class="card">
             <h3>DANA PENSIUN</h3>
-        
-            <p>
-            Perencanaan dana pensiun
-            jangka panjang.
-            </p>
+            <p>Perencanaan dana pensiun jangka panjang.</p>
         </div>
         """, unsafe_allow_html=True)
     
         if st.button("Coba Sekarang →", key="pensiun"):
             st.session_state.menu = "Pensiun"
             st.rerun()
-        
+            
     # ==========================
     # FINANCIAL INSIGHT
     # ==========================
