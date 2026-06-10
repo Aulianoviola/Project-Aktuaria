@@ -508,14 +508,12 @@ if st.session_state.menu == "Dashboard":
     </div>
     
     <div style="
-    margin-right:40px;
+    font-size:100px;
+    opacity:.85;
+    margin-right:30px;
+    filter:drop-shadow(0 0 20px rgba(139,92,246,.4));
     ">
-    <img src="https://cdn-icons-png.flaticon.com/512/4380/4380478.png"
-    style="
-    width:140px;
-    height:140px;
-    object-fit:contain;
-    ">
+    📈
     </div>
     
     </div>
