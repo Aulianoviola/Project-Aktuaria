@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+import plotly.express as px
 
 st.set_page_config(
     page_title="AKTUARIA",
@@ -213,20 +215,24 @@ border-top:5px solid #F59E0B;
 
 .icon{
 
-width:65px;
-height:65px;
+width:85px;
+height:85px;
 
 display:flex;
 align-items:center;
 justify-content:center;
 
-font-size:30px;
+margin:auto;
+margin-bottom:25px;
 
-border-radius:18px;
+border-radius:24px;
 
-margin-bottom:20px;
+backdrop-filter:blur(15px);
+
+box-shadow:
+0 0 30px rgba(139,92,246,.25);
+
 }
-
 .icon-purple{
 background:rgba(139,92,246,.15);
 }
@@ -496,8 +502,18 @@ if st.session_state.menu == "Dashboard":
     with col1:
         st.markdown("""
         <div class="card card-purple">
+        
+            <div class="icon icon-purple">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png"
+                width="40">
+            </div>
+        
             <h3>BUNGA MAJEMUK</h3>
-            <p>Menghitung pertumbuhan investasi berdasarkan bunga majemuk.</p>
+        
+            <p>
+            Menghitung pertumbuhan investasi berdasarkan bunga majemuk.
+            </p>
+        
         </div>
         """, unsafe_allow_html=True)
     
@@ -618,54 +634,127 @@ elif st.session_state.menu == "Bunga":
         )
 
     if hitung:
-
-        hasil = modal * (1+bunga/100)**waktu
+    
+        hasil = modal * (1 + bunga/100)**waktu
         keuntungan = hasil - modal
-
+    
+        tahun_data = []
+        nilai_data = []
+    
+        for i in range(int(waktu) + 1):
+    
+            tahun_data.append(i)
+    
+            nilai_data.append(
+                modal * (1 + bunga/100)**i
+            )
+    
+        df = pd.DataFrame({
+            "Tahun": tahun_data,
+            "Nilai Investasi": nilai_data
+        })
+    
         persen = (
-            keuntungan/modal*100
+            keuntungan / modal * 100
             if modal > 0
             else 0
         )
-
+    
+        fig = px.area(
+            df,
+            x="Tahun",
+            y="Nilai Investasi",
+            title="Pertumbuhan Investasi"
+        )
+    
+        fig.update_traces(
+            mode="lines+markers"
+        )
+    
+        fig.update_layout(
+            template="plotly_dark",
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            title_x=0.5,
+            height=450
+        )
+    
         result_col = st.columns([1,2,1])[1]
-
+    
         with result_col:
+    
             st.markdown(f"""
             <div class="result">
-
+    
             <div class="result-title">
             HASIL PERHITUNGAN
             </div>
-
+    
             <div class="result-value">
             Rp {hasil:,.0f}
             </div>
-
+    
             <hr>
-
+    
             <p style="color:white;font-size:18px;">
             Keuntungan : Rp {keuntungan:,.0f}
             </p>
-
+    
             <p style="color:white;font-size:18px;">
             Pertumbuhan : {persen:.2f}%
             </p>
-
+    
             </div>
             """, unsafe_allow_html=True)
-
+    
+            st.write("")
+    
+            st.plotly_chart(
+                fig,
+                use_container_width=True
+            )
 elif st.session_state.menu == "FV":
     if st.button("← Kembali ke Dashboard"):
         st.session_state.menu = "Dashboard"
         st.rerun()
     st.markdown("""
     <div class="hero">
-    <h1>Nilai Masa Depan</h1>
-    <p>Proyeksi nilai investasi pada masa mendatang.</p>
+    
+    <div style="
+    display:flex;
+    justify-content:center;
+    margin-bottom:25px;
+    ">
+    
+    <div style="
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:rgba(139,92,246,.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 0 35px rgba(139,92,246,.35);
+    ">
+    
+    <img src="https://cdn-icons-png.flaticon.com/512/1041/1041885.png"
+    width="65">
+    
+    </div>
+    
+    </div>
+    
+    <h1 style="text-align:center;">
+    Future Value
+    </h1>
+    
+    <p style="text-align:center;">
+    Proyeksi nilai investasi pada masa mendatang.
+    </p>
+    
     </div>
     """, unsafe_allow_html=True)
-
+    
     st.write("")
 
     left, center, right = st.columns([1,2,1])
@@ -695,24 +784,96 @@ elif st.session_state.menu == "FV":
         )
     
     if hitung_fv:
-    
-        fv = pv * (1+bunga/100)**tahun
-    
-        with st.columns([1,2,1])[1]:
-    
-            st.markdown(f"""
-            <div class="result">
-    
-            <div class="result-title">
-            NILAI MASA DEPAN
-            </div>
-    
-            <div class="result-value">
-            Rp {fv:,.0f}
-            </div>
-    
-            </div>
-            """, unsafe_allow_html=True)
+
+    fv = pv * (1 + bunga/100)**tahun
+
+    tahun_data = []
+    nilai_data = []
+
+    for i in range(int(tahun) + 1):
+
+        tahun_data.append(i)
+
+        nilai_data.append(
+            pv * (1 + bunga/100)**i
+        )
+
+    df = pd.DataFrame({
+        "Tahun": tahun_data,
+        "Nilai Future Value": nilai_data
+    })
+
+    pertumbuhan = (
+        ((fv - pv) / pv) * 100
+        if pv > 0
+        else 0
+    )
+
+    fig = px.area(
+        df,
+        x="Tahun",
+        y="Nilai Future Value",
+        title="Proyeksi Future Value"
+    )
+
+    fig.update_traces(
+        mode="lines+markers"
+    )
+
+    fig.update_layout(
+        template="plotly_dark",
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        title_x=0.5,
+        height=450
+    )
+
+    result_col = st.columns([1,2,1])[1]
+
+    with result_col:
+
+        st.markdown(f"""
+        <div class="result">
+
+        <div class="result-title">
+        NILAI MASA DEPAN
+        </div>
+
+        <div class="result-value">
+        Rp {fv:,.0f}
+        </div>
+
+        <hr>
+
+        <p style="color:white;font-size:18px;">
+        Nilai Awal : Rp {pv:,.0f}
+        </p>
+
+        <p style="color:white;font-size:18px;">
+        Keuntungan : Rp {fv-pv:,.0f}
+        </p>
+
+        <p style="color:white;font-size:18px;">
+        Pertumbuhan : {pertumbuhan:.2f}%
+        </p>
+
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.write("")
+
+        st.markdown("""
+        <div class="card">
+        <h3 style="text-align:center;">
+        Grafik Proyeksi Future Value
+        </h3>
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.plotly_chart(
+            fig,
+            use_container_width=True
+        )
 elif st.session_state.menu == "Target":
     if st.button("← Kembali ke Dashboard"):
         st.session_state.menu = "Dashboard"
