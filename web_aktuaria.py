@@ -787,6 +787,10 @@ elif st.session_state.menu == "Bunga":
             title_font_color="black",
             title_x=0.5,
             height=420,
+            yaxis=dict(
+                tickprefix="Rp ",
+                tickformat=","
+            )
         )
     
         # HASIL DAN GRAFIK BERDAMPINGAN
@@ -1100,11 +1104,16 @@ elif st.session_state.menu == "Target":
         )
     
         fig.update_layout(
-            template="plotly_dark",
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
+            paper_bgcolor="white",
+            plot_bgcolor="white",
+            font_color="black",
+            title_font_color="black",
             title_x=0.5,
-            height=450
+            height=420,
+            yaxis=dict(
+                tickprefix="Rp ",
+                tickformat=","
+            )
         )
     
         col_hasil, col_grafik = st.columns([1, 1.6])
@@ -1261,11 +1270,16 @@ elif st.session_state.menu == "Darurat":
         )
     
         fig.update_layout(
-            template="plotly_dark",
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
+            paper_bgcolor="white",
+            plot_bgcolor="white",
+            font_color="black",
+            title_font_color="black",
             title_x=0.5,
-            height=450
+            height=420,
+            yaxis=dict(
+                tickprefix="Rp ",
+                tickformat=","
+            )
         )
     
         result_col = st.columns([1,2,1])[1]
@@ -1418,7 +1432,11 @@ elif st.session_state.menu == "Pensiun":
             font_color="black",
             title_font_color="black",
             title_x=0.5,
-            height=420
+            height=420,
+            yaxis=dict(
+                tickprefix="Rp ",
+                tickformat=","
+            )
         )
     
         col_hasil, col_grafik = st.columns([1, 1.6])
