@@ -786,7 +786,7 @@ elif st.session_state.menu == "Bunga":
             font_color="black",
             title_font_color="black",
             title_x=0.5,
-            height=420
+            height=420,
         )
     
         # HASIL DAN GRAFIK BERDAMPINGAN
