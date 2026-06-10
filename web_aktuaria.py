@@ -530,13 +530,6 @@ if st.session_state.menu == "Dashboard":
     
     with col2:
         st.markdown("""
-        <div class="card card-purple">
-            <h3></h3>
-            <p></p>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("""
         <div class="card card-green">
         
         <div style="
@@ -788,43 +781,54 @@ elif st.session_state.menu == "Bunga":
         )
     
         fig.update_layout(
-            template="plotly_dark",
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
+            paper_bgcolor="white",
+            plot_bgcolor="white",
+            font_color="black",
+            title_font_color="black",
             title_x=0.5,
-            height=450
+            height=420
         )
     
-        result_col = st.columns([1,2,1])[1]
-    
-        with result_col:
-    
+        # HASIL DAN GRAFIK BERDAMPINGAN
+        
+        col_hasil, col_grafik = st.columns([1, 1.6])
+        
+        with col_hasil:
+        
             st.markdown(f"""
             <div class="result">
-    
+        
             <div class="result-title">
             HASIL PERHITUNGAN
             </div>
-    
+        
             <div class="result-value">
             Rp {hasil:,.0f}
             </div>
-    
+        
             <hr>
-    
+        
             <p style="color:white;font-size:18px;">
             Keuntungan : Rp {keuntungan:,.0f}
             </p>
-    
+        
             <p style="color:white;font-size:18px;">
             Pertumbuhan : {persen:.2f}%
             </p>
-    
+        
             </div>
             """, unsafe_allow_html=True)
-    
-            st.write("")
-    
+        
+        with col_grafik:
+        
+            fig.update_layout(
+                paper_bgcolor="white",
+                plot_bgcolor="white",
+                font_color="black",
+                title_font_color="black",
+                height=420
+            )
+        
             st.plotly_chart(
                 fig,
                 use_container_width=True
@@ -937,55 +941,57 @@ elif st.session_state.menu == "FV":
         )
     
         fig.update_layout(
-            template="plotly_dark",
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
+            paper_bgcolor="white",
+            plot_bgcolor="white",
+            font_color="black",
+            title_font_color="black",
             title_x=0.5,
-            height=450
+            height=420
         )
     
-        result_col = st.columns([1,2,1])[1]
-    
-        with result_col:
-    
+        col_hasil, col_grafik = st.columns([1, 1.6])
+        
+        with col_hasil:
+        
             st.markdown(f"""
             <div class="result">
-    
+        
             <div class="result-title">
             NILAI MASA DEPAN
             </div>
-    
+        
             <div class="result-value">
             Rp {fv:,.0f}
             </div>
-    
+        
             <hr>
-    
+        
             <p style="color:white;font-size:18px;">
             Nilai Awal : Rp {pv:,.0f}
             </p>
-    
+        
             <p style="color:white;font-size:18px;">
             Keuntungan : Rp {fv-pv:,.0f}
             </p>
-    
+        
             <p style="color:white;font-size:18px;">
             Pertumbuhan : {pertumbuhan:.2f}%
             </p>
-    
+        
             </div>
             """, unsafe_allow_html=True)
-    
-            st.write("")
-    
-            st.markdown("""
-            <div class="card">
-            <h3 style="text-align:center;">
-            Grafik Proyeksi Future Value
-            </h3>
-            </div>
-            """, unsafe_allow_html=True)
-    
+        
+        with col_grafik:
+        
+            fig.update_layout(
+                paper_bgcolor="white",
+                plot_bgcolor="white",
+                font_color="black",
+                title_font_color="black",
+                title_x=0.5,
+                height=420
+            )
+        
             st.plotly_chart(
                 fig,
                 use_container_width=True
@@ -1097,52 +1103,53 @@ elif st.session_state.menu == "Target":
             height=450
         )
     
-        result_col = st.columns([1,2,1])[1]
-    
-        with result_col:
-    
+        col_hasil, col_grafik = st.columns([1, 1.6])
+
+        with col_hasil:
+        
             st.markdown(f"""
             <div class="result">
-    
+        
             <div class="result-title">
             TARGET KEUANGAN
             </div>
-    
+        
             <div class="result-value">
             Rp {tabungan:,.0f}
             </div>
-    
+        
             <hr>
-    
+        
             <p style="color:white;font-size:18px;">
             Target : {target}
             </p>
-    
+        
             <p style="color:white;font-size:18px;">
             Harga Target : Rp {harga:,.0f}
             </p>
-    
+        
             <p style="color:white;font-size:18px;">
             Jangka Waktu : {bulan} Bulan
             </p>
-    
+        
             <p style="color:white;font-size:18px;">
             Tabungan/Bulan : Rp {tabungan:,.0f}
             </p>
-    
+        
             </div>
             """, unsafe_allow_html=True)
-    
-            st.write("")
-    
-            st.markdown("""
-            <div class="card">
-            <h3 style="text-align:center;">
-            Grafik Progress Target Keuangan
-            </h3>
-            </div>
-            """, unsafe_allow_html=True)
-    
+        
+        with col_grafik:
+        
+            fig.update_layout(
+                paper_bgcolor="white",
+                plot_bgcolor="white",
+                font_color="black",
+                title_font_color="black",
+                title_x=0.5,
+                height=420
+            )
+        
             st.plotly_chart(
                 fig,
                 use_container_width=True
@@ -1402,51 +1409,61 @@ elif st.session_state.menu == "Pensiun":
         )
     
         fig.update_layout(
-            template="plotly_dark",
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
+            paper_bgcolor="white",
+            plot_bgcolor="white",
+            font_color="black",
+            title_font_color="black",
             title_x=0.5,
-            height=450
+            height=420
         )
     
-        result_col = st.columns([1,2,1])[1]
-    
-        with result_col:
-    
+        col_hasil, col_grafik = st.columns([1, 1.6])
+
+        with col_hasil:
+        
             st.markdown(f"""
             <div class="result">
-    
+        
             <div class="result-title">
             DANA PENSIUN
             </div>
-    
+        
             <div class="result-value">
             Rp {tabungan:,.0f}
             </div>
-    
+        
             <hr>
-    
-            <p style="color:white;font-size:18px;">
+        
+            <p style="color:white;font-size:16px;">
             Usia Saat Ini : {usia} Tahun
             </p>
-    
-            <p style="color:white;font-size:18px;">
+        
+            <p style="color:white;font-size:16px;">
             Usia Pensiun : {usia_pensiun} Tahun
             </p>
-    
-            <p style="color:white;font-size:18px;">
+        
+            <p style="color:white;font-size:16px;">
             Target Dana : Rp {target_dana:,.0f}
             </p>
-    
-            <p style="color:white;font-size:18px;">
-            Tabungan per Bulan : Rp {tabungan:,.0f}
+        
+            <p style="color:white;font-size:16px;">
+            Tabungan/Bulan : Rp {tabungan:,.0f}
             </p>
-    
+        
             </div>
             """, unsafe_allow_html=True)
-    
-            st.write("")
-    
+        
+        with col_grafik:
+        
+            fig.update_layout(
+                paper_bgcolor="white",
+                plot_bgcolor="white",
+                font_color="black",
+                title_font_color="black",
+                title_x=0.5,
+                height=420
+            )
+        
             st.plotly_chart(
                 fig,
                 use_container_width=True
