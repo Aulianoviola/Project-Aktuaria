@@ -501,18 +501,25 @@ if st.session_state.menu == "Dashboard":
 
     with col1:
         st.markdown("""
-        <div class="card card-purple">
+        <div class="card card-green">
         
-            <div class="icon icon-purple">
-                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png"
-                width="40">
-            </div>
+        <div style="
+        display:flex;
+        justify-content:center;
+        margin:20px 0;
+        font-size:45px;
+        opacity:0.9;
+        ">
+        📈
+        </div>
         
-            <h3>BUNGA MAJEMUK</h3>
+        <h3 style="text-align:center;">
+        BUNGA MAJEMUK
+        </h3>
         
-            <p>
-            Menghitung pertumbuhan investasi berdasarkan bunga majemuk.
-            </p>
+        <p style="text-align:center;">
+        Menghitung pertumbuhan investasi berdasarkan bunga majemuk.
+        </p>
         
         </div>
         """, unsafe_allow_html=True)
@@ -524,20 +531,63 @@ if st.session_state.menu == "Dashboard":
     with col2:
         st.markdown("""
         <div class="card card-purple">
-            <h3>NILAI MASA DEPAN</h3>
-            <p>Proyeksi nilai investasi pada masa mendatang.</p>
+            <h3></h3>
+            <p></p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown("""
+        <div class="card card-green">
+        
+        <div style="
+        display:flex;
+        justify-content:center;
+        margin:20px 0;
+        font-size:45px;
+        opacity:0.9;
+        ">
+        🚀
+        </div>
+        
+        <h3 style="text-align:center;">
+        NILAI MASA DEPAN
+        </h3>
+        
+        <p style="text-align:center;">
+        Proyeksi nilai investasi pada masa mendatang.
+        </p>
+        
         </div>
         """, unsafe_allow_html=True)
     
         if st.button("Coba Sekarang →", key="fv"):
             st.session_state.menu = "FV"
             st.rerun()
+
+    
     
     with col3:
         st.markdown("""
-        <div class="card card-purple">
-            <h3>TARGET KEUANGAN</h3>
-            <p>Menentukan kebutuhan tabungan untuk mencapai tujuan finansial.</p>
+        <div class="card card-green">
+        
+        <div style="
+        display:flex;
+        justify-content:center;
+        margin:20px 0;
+        font-size:45px;
+        opacity:0.9;
+        ">
+        🎯
+        </div>
+        
+        <h3 style="text-align:center;">
+        TARGET KEUANGAN
+        </h3>
+        
+        <p style="text-align:center;">
+        Menentukan kebutuhan tabungan untuk mencapai tujuan finansial.
+        </p>
+        
         </div>
         """, unsafe_allow_html=True)
     
@@ -551,9 +601,26 @@ if st.session_state.menu == "Dashboard":
     
     with col4:
         st.markdown("""
-        <div class="card card-purple">
-            <h3>DANA DARURAT</h3>
-            <p>Menghitung kebutuhan dana cadangan keuangan.</p>
+        <div class="card card-green">
+        
+        <div style="
+        display:flex;
+        justify-content:center;
+        margin:20px 0;
+        font-size:45px;
+        opacity:0.9;
+        ">
+        🛡️
+        </div>
+        
+        <h3 style="text-align:center;">
+        DANA DARURAT
+        </h3>
+        
+        <p style="text-align:center;">
+        Menghitung kebutuhan dana cadangan keuangan.
+        </p>
+        
         </div>
         """, unsafe_allow_html=True)
     
@@ -563,11 +630,29 @@ if st.session_state.menu == "Dashboard":
     
     with col5:
         st.markdown("""
-        <div class="card card-purple">
-            <h3>DANA PENSIUN</h3>
-            <p>Perencanaan dana pensiun jangka panjang.</p>
+        <div class="card card-green">
+        
+        <div style="
+        display:flex;
+        justify-content:center;
+        margin:20px 0;
+        font-size:45px;
+        opacity:0.9;
+        ">
+        🏦
+        </div>
+        
+        <h3 style="text-align:center;">
+        DANA PENSIUN
+        </h3>
+        
+        <p style="text-align:center;">
+        Perencanaan dana pensiun jangka panjang.
+        </p>
+        
         </div>
         """, unsafe_allow_html=True)
+    
     
         if st.button("Coba Sekarang →", key="pensiun"):
             st.session_state.menu = "Pensiun"
