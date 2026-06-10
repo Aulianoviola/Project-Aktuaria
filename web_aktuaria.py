@@ -602,8 +602,39 @@ elif st.session_state.menu == "Bunga":
         st.rerun()
     st.markdown("""
     <div class="hero">
-    <h1>Bunga Majemuk</h1>
-    <p>Menghitung pertumbuhan investasi berdasarkan bunga majemuk.</p>
+    
+    <div style="
+    display:flex;
+    justify-content:center;
+    margin-bottom:25px;
+    ">
+    
+    <div style="
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:rgba(139,92,246,.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 0 35px rgba(139,92,246,.35);
+    ">
+    
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png"
+    width="65">
+    
+    </div>
+    
+    </div>
+    
+    <h1 style="text-align:center;">
+    Bunga Majemuk
+    </h1>
+    
+    <p style="text-align:center;">
+    Menghitung pertumbuhan investasi berdasarkan bunga majemuk.
+    </p>
+    
     </div>
     """, unsafe_allow_html=True)
 
@@ -785,103 +816,135 @@ elif st.session_state.menu == "FV":
     
     if hitung_fv:
 
-    fv = pv * (1 + bunga/100)**tahun
-
-    tahun_data = []
-    nilai_data = []
-
-    for i in range(int(tahun) + 1):
-
-        tahun_data.append(i)
-
-        nilai_data.append(
-            pv * (1 + bunga/100)**i
+        fv = pv * (1 + bunga/100)**tahun
+    
+        tahun_data = []
+        nilai_data = []
+    
+        for i in range(int(tahun) + 1):
+    
+            tahun_data.append(i)
+    
+            nilai_data.append(
+                pv * (1 + bunga/100)**i
+            )
+    
+        df = pd.DataFrame({
+            "Tahun": tahun_data,
+            "Nilai Future Value": nilai_data
+        })
+    
+        pertumbuhan = (
+            ((fv - pv) / pv) * 100
+            if pv > 0
+            else 0
         )
-
-    df = pd.DataFrame({
-        "Tahun": tahun_data,
-        "Nilai Future Value": nilai_data
-    })
-
-    pertumbuhan = (
-        ((fv - pv) / pv) * 100
-        if pv > 0
-        else 0
-    )
-
-    fig = px.area(
-        df,
-        x="Tahun",
-        y="Nilai Future Value",
-        title="Proyeksi Future Value"
-    )
-
-    fig.update_traces(
-        mode="lines+markers"
-    )
-
-    fig.update_layout(
-        template="plotly_dark",
-        paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(0,0,0,0)",
-        title_x=0.5,
-        height=450
-    )
-
-    result_col = st.columns([1,2,1])[1]
-
-    with result_col:
-
-        st.markdown(f"""
-        <div class="result">
-
-        <div class="result-title">
-        NILAI MASA DEPAN
-        </div>
-
-        <div class="result-value">
-        Rp {fv:,.0f}
-        </div>
-
-        <hr>
-
-        <p style="color:white;font-size:18px;">
-        Nilai Awal : Rp {pv:,.0f}
-        </p>
-
-        <p style="color:white;font-size:18px;">
-        Keuntungan : Rp {fv-pv:,.0f}
-        </p>
-
-        <p style="color:white;font-size:18px;">
-        Pertumbuhan : {pertumbuhan:.2f}%
-        </p>
-
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.write("")
-
-        st.markdown("""
-        <div class="card">
-        <h3 style="text-align:center;">
-        Grafik Proyeksi Future Value
-        </h3>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.plotly_chart(
-            fig,
-            use_container_width=True
+    
+        fig = px.area(
+            df,
+            x="Tahun",
+            y="Nilai Future Value",
+            title="Proyeksi Future Value"
         )
+    
+        fig.update_traces(
+            mode="lines+markers"
+        )
+    
+        fig.update_layout(
+            template="plotly_dark",
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            title_x=0.5,
+            height=450
+        )
+    
+        result_col = st.columns([1,2,1])[1]
+    
+        with result_col:
+    
+            st.markdown(f"""
+            <div class="result">
+    
+            <div class="result-title">
+            NILAI MASA DEPAN
+            </div>
+    
+            <div class="result-value">
+            Rp {fv:,.0f}
+            </div>
+    
+            <hr>
+    
+            <p style="color:white;font-size:18px;">
+            Nilai Awal : Rp {pv:,.0f}
+            </p>
+    
+            <p style="color:white;font-size:18px;">
+            Keuntungan : Rp {fv-pv:,.0f}
+            </p>
+    
+            <p style="color:white;font-size:18px;">
+            Pertumbuhan : {pertumbuhan:.2f}%
+            </p>
+    
+            </div>
+            """, unsafe_allow_html=True)
+    
+            st.write("")
+    
+            st.markdown("""
+            <div class="card">
+            <h3 style="text-align:center;">
+            Grafik Proyeksi Future Value
+            </h3>
+            </div>
+            """, unsafe_allow_html=True)
+    
+            st.plotly_chart(
+                fig,
+                use_container_width=True
+            )
+            
 elif st.session_state.menu == "Target":
     if st.button("← Kembali ke Dashboard"):
         st.session_state.menu = "Dashboard"
         st.rerun()
     st.markdown("""
     <div class="hero">
-    <h1>Target Keuangan</h1>
-    <p>Tentukan jumlah tabungan yang diperlukan untuk mencapai tujuan finansial.</p>
+    
+    <div style="
+    display:flex;
+    justify-content:center;
+    margin-bottom:25px;
+    ">
+    
+    <div style="
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:rgba(139,92,246,.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 0 35px rgba(139,92,246,.35);
+    ">
+    
+    <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png"
+    width="65">
+    
+    </div>
+    
+    </div>
+    
+    <h1 style="text-align:center;">
+    Target Keuangan
+    </h1>
+    
+    <p style="text-align:center;">
+    Tentukan jumlah tabungan yang diperlukan untuk mencapai tujuan finansial.
+    </p>
+    
     </div>
     """, unsafe_allow_html=True)
 
@@ -911,28 +974,94 @@ elif st.session_state.menu == "Target":
         )
     
     if hitung_target:
-    
+
         tabungan = harga / bulan
     
-        with st.columns([1,2,1])[1]:
+        bulan_data = []
+        saldo_data = []
+    
+        for i in range(1, int(bulan) + 1):
+    
+            bulan_data.append(i)
+    
+            saldo_data.append(
+                tabungan * i
+            )
+    
+        df = pd.DataFrame({
+            "Bulan": bulan_data,
+            "Saldo Terkumpul": saldo_data
+        })
+    
+        fig = px.area(
+            df,
+            x="Bulan",
+            y="Saldo Terkumpul",
+            title=f"Progress Menuju {target}"
+        )
+    
+        fig.update_traces(
+            mode="lines+markers"
+        )
+    
+        fig.update_layout(
+            template="plotly_dark",
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            title_x=0.5,
+            height=450
+        )
+    
+        result_col = st.columns([1,2,1])[1]
+    
+        with result_col:
     
             st.markdown(f"""
             <div class="result">
     
             <div class="result-title">
-            TABUNGAN PER BULAN
+            TARGET KEUANGAN
             </div>
     
             <div class="result-value">
             Rp {tabungan:,.0f}
             </div>
     
-            <p style="color:white;margin-top:20px;">
-            Target: {target}
+            <hr>
+    
+            <p style="color:white;font-size:18px;">
+            Target : {target}
+            </p>
+    
+            <p style="color:white;font-size:18px;">
+            Harga Target : Rp {harga:,.0f}
+            </p>
+    
+            <p style="color:white;font-size:18px;">
+            Jangka Waktu : {bulan} Bulan
+            </p>
+    
+            <p style="color:white;font-size:18px;">
+            Tabungan/Bulan : Rp {tabungan:,.0f}
             </p>
     
             </div>
             """, unsafe_allow_html=True)
+    
+            st.write("")
+    
+            st.markdown("""
+            <div class="card">
+            <h3 style="text-align:center;">
+            Grafik Progress Target Keuangan
+            </h3>
+            </div>
+            """, unsafe_allow_html=True)
+    
+            st.plotly_chart(
+                fig,
+                use_container_width=True
+            )
 
 elif st.session_state.menu == "Darurat":
     if st.button("← Kembali ke Dashboard"):
@@ -940,8 +1069,39 @@ elif st.session_state.menu == "Darurat":
         st.rerun()
     st.markdown("""
     <div class="hero">
-    <h1>Dana Darurat</h1>
-    <p>Menghitung kebutuhan dana cadangan berdasarkan kondisi keuangan.</p>
+    
+    <div style="
+    display:flex;
+    justify-content:center;
+    margin-bottom:25px;
+    ">
+    
+    <div style="
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:rgba(139,92,246,.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 0 35px rgba(139,92,246,.35);
+    ">
+    
+    <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png"
+    width="65">
+    
+    </div>
+    
+    </div>
+    
+    <h1 style="text-align:center;">
+    Dana Darurat
+    </h1>
+    
+    <p style="text-align:center;">
+    Menghitung kebutuhan dana cadangan berdasarkan kondisi keuangan.
+    </p>
+    
     </div>
     """, unsafe_allow_html=True)
 
@@ -970,34 +1130,87 @@ elif st.session_state.menu == "Darurat":
             use_container_width=True
         )
 
-    if hitung_darurat:
+   if hitung_darurat:
 
         if status == "Belum Menikah":
             faktor = 6
-
+    
         elif status == "Menikah":
             faktor = 9
-
+    
         else:
             faktor = 12
-
+    
         dana = pengeluaran * faktor
-
-        with st.columns([1,2,1])[1]:
-
+    
+        df = pd.DataFrame({
+            "Kategori": [
+                "3 Bulan",
+                "6 Bulan",
+                "9 Bulan",
+                "12 Bulan"
+            ],
+            "Dana": [
+                pengeluaran * 3,
+                pengeluaran * 6,
+                pengeluaran * 9,
+                pengeluaran * 12
+            ]
+        })
+    
+        fig = px.bar(
+            df,
+            x="Kategori",
+            y="Dana",
+            title="Perbandingan Dana Darurat"
+        )
+    
+        fig.update_layout(
+            template="plotly_dark",
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            title_x=0.5,
+            height=450
+        )
+    
+        result_col = st.columns([1,2,1])[1]
+    
+        with result_col:
+    
             st.markdown(f"""
             <div class="result">
-
+    
             <div class="result-title">
             DANA DARURAT IDEAL
             </div>
-
+    
             <div class="result-value">
             Rp {dana:,.0f}
             </div>
-
+    
+            <hr>
+    
+            <p style="color:white;font-size:18px;">
+            Status : {status}
+            </p>
+    
+            <p style="color:white;font-size:18px;">
+            Pengeluaran Bulanan : Rp {pengeluaran:,.0f}
+            </p>
+    
+            <p style="color:white;font-size:18px;">
+            Faktor Perhitungan : {faktor} Bulan
+            </p>
+    
             </div>
             """, unsafe_allow_html=True)
+    
+            st.write("")
+    
+            st.plotly_chart(
+                fig,
+                use_container_width=True
+            )
     
 elif st.session_state.menu == "Pensiun":
     if st.button("← Kembali ke Dashboard"):
@@ -1005,8 +1218,39 @@ elif st.session_state.menu == "Pensiun":
         st.rerun()
     st.markdown("""
     <div class="hero">
-    <h1>Dana Pensiun</h1>
-    <p>Rencanakan kebutuhan dana untuk masa pensiun.</p>
+    
+    <div style="
+    display:flex;
+    justify-content:center;
+    margin-bottom:25px;
+    ">
+    
+    <div style="
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:rgba(139,92,246,.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 0 35px rgba(139,92,246,.35);
+    ">
+    
+    <img src="https://cdn-icons-png.flaticon.com/512/4320/4320371.png"
+    width="65">
+    
+    </div>
+    
+    </div>
+    
+    <h1 style="text-align:center;">
+    Dana Pensiun
+    </h1>
+    
+    <p style="text-align:center;">
+    Rencanakan kebutuhan dana untuk masa pensiun.
+    </p>
+    
     </div>
     """, unsafe_allow_html=True)
 
@@ -1036,22 +1280,60 @@ elif st.session_state.menu == "Pensiun":
             use_container_width=True
         )
     if hitung_pensiun:
-
         sisa_tahun = usia_pensiun - usia
-
+    
         total_bulan = sisa_tahun * 12
-
+    
         tabungan = (
             target_dana / total_bulan
             if total_bulan > 0
             else 0
         )
-        with st.columns([1,2,1])[1]:
+    
+        bulan_data = []
+        dana_data = []
+    
+        for i in range(1, total_bulan + 1):
+    
+            bulan_data.append(i)
+    
+            dana_data.append(
+                tabungan * i
+            )
+    
+        df = pd.DataFrame({
+            "Bulan": bulan_data,
+            "Akumulasi Dana": dana_data
+        })
+    
+        fig = px.area(
+            df,
+            x="Bulan",
+            y="Akumulasi Dana",
+            title="Akumulasi Dana Pensiun"
+        )
+    
+        fig.update_traces(
+            mode="lines+markers"
+        )
+    
+        fig.update_layout(
+            template="plotly_dark",
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            title_x=0.5,
+            height=450
+        )
+    
+        result_col = st.columns([1,2,1])[1]
+    
+        with result_col:
+    
             st.markdown(f"""
             <div class="result">
     
             <div class="result-title">
-            TABUNGAN PER BULAN
+            DANA PENSIUN
             </div>
     
             <div class="result-value">
@@ -1060,17 +1342,31 @@ elif st.session_state.menu == "Pensiun":
     
             <hr>
     
-            <p style="color:white;">
-            Untuk mencapai dana pensiun
-            sebesar Rp {target_dana:,.0f}
-            pada usia {usia_pensiun} tahun,
-            diperlukan tabungan sekitar
-            Rp {tabungan:,.0f}
-            per bulan.
+            <p style="color:white;font-size:18px;">
+            Usia Saat Ini : {usia} Tahun
+            </p>
+    
+            <p style="color:white;font-size:18px;">
+            Usia Pensiun : {usia_pensiun} Tahun
+            </p>
+    
+            <p style="color:white;font-size:18px;">
+            Target Dana : Rp {target_dana:,.0f}
+            </p>
+    
+            <p style="color:white;font-size:18px;">
+            Tabungan per Bulan : Rp {tabungan:,.0f}
             </p>
     
             </div>
             """, unsafe_allow_html=True)
+    
+            st.write("")
+    
+            st.plotly_chart(
+                fig,
+                use_container_width=True
+            )
 
 st.markdown("""
 <br><br>
