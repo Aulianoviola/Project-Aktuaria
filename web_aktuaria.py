@@ -480,20 +480,34 @@ if st.session_state.menu == "Dashboard":
     st.markdown("""
     <div class="hero">
     
-    <div class="hero-title">
-    AKTUARIA
-    </div>
+    <div style="
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    ">
     
-    <br>
+    <div>
     
-    <div class="hero-sub">
+    <h1>AKTUARIA</h1>
+    
+    <p>
     Kelola investasi, dana darurat, target keuangan,
     dan perencanaan pensiun dalam satu dashboard modern.
+    </p>
+    
+    </div>
+    
+    <div style="
+    font-size:120px;
+    opacity:0.15;
+    ">
+    📊
+    </div>
+    
     </div>
     
     </div>
     """, unsafe_allow_html=True)
-
     st.write("")
     st.write("")
 
