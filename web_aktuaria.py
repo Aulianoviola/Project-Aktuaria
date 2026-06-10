@@ -947,6 +947,10 @@ elif st.session_state.menu == "FV":
             title_font_color="black",
             title_x=0.5,
             height=420
+            yaxis=dict(
+                tickprefix="Rp ",
+                tickformat=","
+            )
         )
     
         col_hasil, col_grafik = st.columns([1, 1.6])
