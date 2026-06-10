@@ -1130,8 +1130,7 @@ elif st.session_state.menu == "Darurat":
             use_container_width=True
         )
 
-   if hitung_darurat:
-
+    if hitung_darurat:
         if status == "Belum Menikah":
             faktor = 6
     
