@@ -488,9 +488,19 @@ if st.session_state.menu == "Dashboard":
     
     <div>
     
-    <h1>AKTUARIA</h1>
+    <h1 style="
+    font-size:72px;
+    font-weight:800;
+    margin-bottom:20px;
+    ">
+    AKTUARIA
+    </h1>
     
-    <p>
+    <p style="
+    font-size:24px;
+    line-height:1.8;
+    max-width:700px;
+    ">
     Kelola investasi, dana darurat, target keuangan,
     dan perencanaan pensiun dalam satu dashboard modern.
     </p>
@@ -498,8 +508,9 @@ if st.session_state.menu == "Dashboard":
     </div>
     
     <div style="
-    font-size:120px;
-    opacity:0.15;
+    font-size:140px;
+    opacity:0.4;
+    margin-right:40px;
     ">
     📊
     </div>
